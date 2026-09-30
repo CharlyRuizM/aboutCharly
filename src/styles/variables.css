@@ -1,0 +1,10 @@
+:root {
+  --color-bg: #101112;
+  --color-text: #f2f0e9;
+  --color-muted: #a6a6a1;
+  --color-accent: #dfbb71;
+  --color-border: #343534;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, monospace;
+  --content-width: 1200px;
+}
