@@ -43,3 +43,11 @@
   font-display: swap;
   src: url('../assets/fonts/doto-latin-wght-normal.woff2') format('woff2');
 }
+/* Daft Font (MatreroG, 2002; gratuita). Solo para toques puntuales, como el nombre. */
+@font-face {
+  font-family: 'Daft Font';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/daft-font.woff2') format('woff2');
+}
