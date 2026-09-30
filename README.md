@@ -19,6 +19,8 @@ npm run dev
 - `src/components/`: elementos compartidos, como la cabecera.
 - `src/sections/`: secciones de la página.
 - `src/data/`: contenido del portfolio.
+- `src/styles/fonts.css`: `@font-face` de las fuentes auto-hospedadas.
+- `src/assets/fonts/`: archivos woff2 (subset latin) y sus licencias OFL.
 - `src/styles/tokens.css`: colores, tipografías y variables visuales.
 - `src/styles/base.css`: reset y estilos base.
 - `src/styles/layout.css`: contenedor y cabecera.
@@ -31,6 +33,13 @@ Los componentes son funciones TypeScript que devuelven strings de HTML.
 Un plugin en `vite.config.ts` ejecuta `renderPage()` y reemplaza `<!--app-->`
 en `index.html`, así el sitio publicado es HTML estático que funciona sin JS.
 El código de `render.ts`, `components/`, `sections/` y `data/` no se envía al navegador.
+
+## Tipografía
+
+- Display: Instrument Serif (normal e itálica): la parte humana.
+- Texto: Instrument Sans (variable, 400–700).
+- Datos y etiquetas: DM Mono: la parte máquina.
+- Displays puntuales: Doto (matriz de puntos), usarla con moderación.
 
 ## Contexto del proyecto
 

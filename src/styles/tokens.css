@@ -4,8 +4,11 @@
   --color-muted: #a6a6a1;
   --color-accent: #dfbb71;
   --color-border: #343534;
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-mono: 'SFMono-Regular', Consolas, monospace;
+  /* Tipografía: humano (serif) + máquina (mono); Doto solo para displays puntuales */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, Menlo, monospace;
+  --font-dot: 'Doto', 'DM Mono', monospace;
   --content-width: 1200px;
   --header-height: 104px;
 }
