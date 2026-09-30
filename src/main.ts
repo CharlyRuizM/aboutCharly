@@ -1,10 +1,6 @@
-import './styles/variables.css'
-import './styles/global.css'
-import { renderHeader } from './components/header'
-import { renderIntro } from './sections/intro'
-
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <a class="skip-link" href="#main">Ir al contenido</a>
-  ${renderHeader()}
-  <main id="main">${renderIntro()}</main>
-`
+// Entrada del navegador: estilos + comportamiento (progressive enhancement).
+// El HTML ya viene prerenderizado desde src/render.ts.
+import './styles/tokens.css'
+import './styles/base.css'
+import './styles/layout.css'
+import './styles/intro.css'
