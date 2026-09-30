@@ -17,13 +17,16 @@ npm run dev
 - `src/render.ts`: arma el HTML de la página. Corre en Node (build y dev), no en el navegador.
 - `src/main.ts`: entrada del navegador; estilos y comportamiento (progressive enhancement).
 - `src/components/`: elementos compartidos, como la cabecera.
-- `src/sections/`: secciones de la página.
-- `src/data/`: contenido del portfolio.
+- `src/sections/`: secciones de la página (`hero`, `cases`).
+- `src/data/`: contenido del portfolio (`profile.ts`, `cases.ts`). Para agregar un caso, edita `cases.ts`.
+- `src/scripts/`: comportamiento en el navegador (escritura animada, tag activo).
+- `src/types.ts`: tipos compartidos.
 - `src/styles/fonts.css`: `@font-face` de las fuentes auto-hospedadas.
 - `src/assets/fonts/`: archivos woff2 (subset latin) y sus licencias OFL.
 - `src/styles/tokens.css`: colores, tipografías y variables visuales.
 - `src/styles/base.css`: reset y estilos base.
 - `src/styles/layout.css`: contenedor y cabecera.
+- Tema: oscuro por defecto, claro si el sistema del visitante lo pide (`prefers-color-scheme` en `tokens.css`).
 - `src/styles/<sección>.css`: estilos de cada sección.
 - `public/`: archivos públicos, como el favicon.
 

@@ -1,0 +1,23 @@
+/* Casos de estudio: barra de tags sticky + lista */
+.cases-head { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--color-border); padding-top: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.cases-head h2 { font: inherit; color: var(--color-text); }
+
+.tagbar { position: sticky; top: 0; z-index: 5; margin-inline: calc(var(--gutter) * -1); padding: 14px var(--gutter); background: var(--color-glass); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.tags { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 6px; border: 1px solid var(--color-border); border-radius: 999px; }
+.tags::-webkit-scrollbar { display: none; }
+.tag { flex: none; font: 500 13px/1 var(--font-mono); letter-spacing: .03em; color: var(--color-muted); padding: 10px 16px; border-radius: 999px; border: 1px solid transparent; transition: color .12s, border-color .12s, background-color .12s; }
+.tag:hover { color: var(--color-text); border-color: var(--color-border); }
+.tag.is-active { color: var(--color-bg); background: var(--color-text); }
+.tag:focus-visible { outline-offset: 2px; }
+
+.case { display: grid; grid-template-columns: 64px minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(16px, 2vw, 28px); padding-block: clamp(32px, 4vw, 48px); border-bottom: 1px solid var(--color-border); scroll-margin-top: 88px; }
+.case-n { font-family: var(--font-mono); font-size: 12px; color: var(--color-muted); padding-top: .7em; font-variant-numeric: tabular-nums; }
+.case h3 { font-family: var(--font-display); font-size: clamp(32px, 3.6vw, 48px); line-height: 1; letter-spacing: -.02em; }
+.case p { margin: 0; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.6; color: var(--color-muted); max-width: 48ch; }
+.case-media { grid-column: 2 / -1; aspect-ratio: 21 / 8; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
+
+@media (max-width: 720px) {
+  .case { grid-template-columns: minmax(0, 1fr); }
+  .case-n { padding-top: 0; }
+  .case-media { grid-column: auto; }
+}

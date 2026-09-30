@@ -1,23 +1,45 @@
+/* Oscuro por defecto; claro cuando el sistema del visitante lo pide. */
 :root {
-  /* Neutros fríos para convivir con el cromo */
   --color-bg: #0e0f11;
   --color-text: #eef0f2;
   --color-muted: #9aa0a8;
+  --color-dim: #5d626a;
   --color-border: #2c2f34;
+  --color-placeholder: #1b1d21;
+  --color-placeholder-2: #23262b;
+  --color-glass: rgb(14 15 17 / .78);
 
-  /* Acento: cromo con dispersión de color en los bordes.
-     Úsalo en pocos lugares: es el único gesto de "material" del sitio. */
-  --color-chrome: #d6dae0; /* versión plana: focus, selección, textos pequeños */
+  /* Cromo (reservado para toques puntuales) */
+  --color-chrome: #d6dae0;
   --gradient-chrome: linear-gradient(180deg, #ffffff 0%, #d9dde3 30%, #6b717a 50%, #f4f6f8 58%, #a9afb8 100%);
   --gradient-spectrum: linear-gradient(90deg, #ff6b1f, #ffc629 25%, #6fe07a 50%, #3d7bff 75%, #7d3cff);
   --spectrum-warm: rgb(255 122 36 / .9);
   --spectrum-cool: rgb(91 72 255 / .9);
-  /* Tipografía: humano (serif) + máquina (mono); Doto solo para displays puntuales */
+
+  /* Tipografía: humano (serif) + máquina (mono) */
   --font-display: 'Instrument Serif', Georgia, serif;
   --font-sans: 'Instrument Sans', system-ui, sans-serif;
   --font-mono: 'DM Mono', ui-monospace, Menlo, monospace;
   --font-dot: 'Doto', 'DM Mono', monospace;
   --font-daft: 'Daft Font', var(--font-display); /* solo easter eggs muy sutiles */
-  --content-width: 1200px;
-  --header-height: 104px;
+
+  /* Ritmo */
+  --beat: calc(60s / 123);
+
+  --content-width: 1280px;
+  --gutter: clamp(20px, 3.2vw, 48px);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #f3f3f1;
+    --color-text: #111214;
+    --color-muted: #62676e;
+    --color-dim: #a3a7ac;
+    --color-border: #d4d5d2;
+    --color-placeholder: #e0e1de;
+    --color-placeholder-2: #d5d6d3;
+    --color-glass: rgb(243 243 241 / .8);
+    --color-chrome: #5d636b;
+  }
 }

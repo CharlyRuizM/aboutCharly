@@ -1,0 +1,17 @@
+/* Hero compacto: foto · saludo · bio. No ocupa todo el viewport para que asomen los casos. */
+.hero { display: grid; grid-template-columns: clamp(96px, 13vw, 170px) minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 44px); align-items: start; padding-block: clamp(48px, 7vw, 96px) clamp(40px, 5vw, 72px); }
+.hero-portrait { aspect-ratio: 4 / 5; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
+.hero-hello { font-family: var(--font-display); font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -.025em; }
+.hero-name { font-style: italic; cursor: default; }
+/* Easter egg: el nombre cambia a la Daft Font al pasar el cursor */
+@media (hover: hover) { .hero-name:hover { font-family: var(--font-daft); font-style: normal; font-size: .8em; letter-spacing: 0; } }
+.hero-typed { color: var(--color-muted); }
+.caret { display: inline-block; width: .06em; height: .85em; margin-left: .04em; vertical-align: -.06em; background: var(--gradient-spectrum); animation: blink calc(var(--beat) * 2) steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hero-bio { margin: 0; padding-top: .6em; font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: var(--color-muted); max-width: 46ch; }
+.hero-bio b { color: var(--color-text); font-weight: 500; }
+
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 96px minmax(0, 1fr); }
+  .hero-bio { grid-column: 1 / -1; padding-top: 0; }
+}
