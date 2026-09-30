@@ -1,9 +1,17 @@
 :root {
-  --color-bg: #101112;
-  --color-text: #f2f0e9;
-  --color-muted: #a6a6a1;
-  --color-accent: #dfbb71;
-  --color-border: #343534;
+  /* Neutros fríos para convivir con el cromo */
+  --color-bg: #0e0f11;
+  --color-text: #eef0f2;
+  --color-muted: #9aa0a8;
+  --color-border: #2c2f34;
+
+  /* Acento: cromo con dispersión de color en los bordes.
+     Úsalo en pocos lugares: es el único gesto de "material" del sitio. */
+  --color-chrome: #d6dae0; /* versión plana: focus, selección, textos pequeños */
+  --gradient-chrome: linear-gradient(180deg, #ffffff 0%, #d9dde3 30%, #6b717a 50%, #f4f6f8 58%, #a9afb8 100%);
+  --gradient-spectrum: linear-gradient(90deg, #ff6b1f, #ffc629 25%, #6fe07a 50%, #3d7bff 75%, #7d3cff);
+  --spectrum-warm: rgb(255 122 36 / .9);
+  --spectrum-cool: rgb(91 72 255 / .9);
   /* Tipografía: humano (serif) + máquina (mono); Doto solo para displays puntuales */
   --font-display: 'Instrument Serif', Georgia, serif;
   --font-sans: 'Instrument Sans', system-ui, sans-serif;

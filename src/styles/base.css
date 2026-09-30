@@ -1,10 +1,15 @@
 * { box-sizing: border-box; }
 html { color-scheme: dark; }
-body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+body { margin: 0; font-synthesis: none; background: var(--color-bg); color: var(--color-text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
-a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 6px; }
-::selection { background: var(--color-accent); color: var(--color-bg); }
+a:focus-visible { outline: 2px solid var(--color-chrome); outline-offset: 6px; }
+::selection { background: var(--color-chrome); color: var(--color-bg); }
 h1 { margin: 0; font-family: var(--font-display); font-size: clamp(56px, 12vw, 160px); font-weight: 400; line-height: .95; letter-spacing: -.035em; text-wrap: balance; }
-.accent { color: var(--color-accent); }
+h1 strong, .wordmark strong { font-weight: 400; font-style: italic; } /* la serif solo tiene 400: el énfasis es itálica */
+/* Cromo: texto con relleno metálico y bordes de color (cálido abajo, frío a la derecha) */
+.chrome { color: var(--color-chrome); }
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .chrome { background: var(--gradient-chrome); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 .022em .005em var(--spectrum-warm)) drop-shadow(.018em -.004em .006em var(--spectrum-cool)); }
+}
 .skip-link { position: absolute; top: 12px; left: 24px; padding: 12px; background: var(--color-text); color: var(--color-bg); transform: translateY(-200%); z-index: 1; }
 .skip-link:focus { transform: translateY(0); }

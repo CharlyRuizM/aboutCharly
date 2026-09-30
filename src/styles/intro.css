@@ -1,4 +1,4 @@
 .intro { min-height: calc(100svh - var(--header-height)); display: flex; flex-direction: column; justify-content: center; padding-block: 80px; }
-.eyebrow { margin: 0 0 32px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); }
+.eyebrow { margin: 0 0 32px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-chrome); }
 .intro-copy { max-width: 390px; margin: 32px 0 0; font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--color-muted); }
-.intro-rule { width: 64px; height: 2px; background: var(--color-accent); margin-top: 56px; }
+.intro-rule { width: 96px; height: 2px; background: var(--gradient-spectrum); margin-top: 56px; }
