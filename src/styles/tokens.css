@@ -17,7 +17,7 @@
   --font-sans: 'Instrument Sans', system-ui, sans-serif;
   --font-mono: 'DM Mono', ui-monospace, Menlo, monospace;
   --font-dot: 'Doto', 'DM Mono', monospace;
-  --font-daft: 'Daft Font', var(--font-display); /* solo toques puntuales */
+  --font-daft: 'Daft Font', var(--font-display); /* solo easter eggs muy sutiles */
   --content-width: 1200px;
   --header-height: 104px;
 }
