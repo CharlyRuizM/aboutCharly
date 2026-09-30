@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 
+# Deploy desactivado por ahora: solo se ejecuta a mano desde la pestaña Actions.
+# Para publicar en cada push a main, agrega:
+#   push:
+#     branches: [main]
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

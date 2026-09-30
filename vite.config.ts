@@ -24,7 +24,8 @@ function prerender(): Plugin {
   }
 }
 
-export default defineConfig({
-  base: '/aboutCharly/', // GitHub Pages: charlyruizm.github.io/aboutCharly/
+export default defineConfig(({ command }) => ({
+  // En local se sirve en la raíz; el build usa la ruta de GitHub Pages.
+  base: command === 'build' ? '/aboutCharly/' : '/',
   plugins: [prerender()],
-})
+}))

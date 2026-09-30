@@ -36,5 +36,5 @@ El código de `render.ts`, `components/`, `sections/` y `data/` no se envía al 
 
 - Repositorio: `git@github.com:CharlyRuizM/aboutCharly.git`.
 - Dirección visual: inspiración Daft Punk. La portada actual es una base mínima; el diseño y el contenido del book se desarrollarán después.
-- Publicación: GitHub Pages vía GitHub Actions (`.github/workflows/deploy.yml`) en cada push a `main`. En *Settings → Pages*, la fuente debe ser **GitHub Actions**.
+- Publicación: por ahora solo local. El workflow `.github/workflows/deploy.yml` está listo pero solo corre a mano; cuando se active, en *Settings → Pages* la fuente debe ser **GitHub Actions**.
 - Siguiente paso: definir el contenido de la homepage y los proyectos que se mostrarán.
