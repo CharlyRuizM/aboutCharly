@@ -28,6 +28,20 @@
 .cs-section > p:not(.cs-eyebrow) { margin: 0; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.65; color: var(--color-muted); max-width: 62ch; }
 .cs-section b { color: var(--color-text); font-weight: 500; }
 
+/* Alternativas evaluadas (trade-offs) */
+.cs-options { display: grid; border-top: 1px solid var(--color-border); }
+.cs-option { display: grid; grid-template-columns: minmax(0, 11rem) 7rem minmax(0, 1fr); gap: 8px 20px; padding-block: 14px; border-bottom: 1px solid var(--color-border); font-size: 15px; line-height: 1.5; color: var(--color-muted); }
+.cs-option-name { color: var(--color-text); }
+.cs-option-verdict { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding-top: .25em; color: var(--color-dim); }
+.cs-option.is-chosen .cs-option-name { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.2; }
+.cs-option.is-chosen .cs-option-verdict { color: var(--color-text); }
+.cs-option:not(.is-chosen) .cs-option-name { text-decoration: line-through; text-decoration-color: var(--color-dim); }
+@media (max-width: 560px) { .cs-option { grid-template-columns: minmax(0, 1fr) auto; } .cs-option-reason { grid-column: 1 / -1; } }
+
+.cs-list { display: grid; gap: 8px; border-left: 1px solid var(--color-text); padding-left: 18px; }
+.cs-list p { margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.cs-list ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.5; }
+
 /* Notas de contenido pendiente: visibles mientras el caso está en borrador */
 .cs-pending { border: 1px dashed var(--color-border); padding: 14px 18px; font-size: 14px; color: var(--color-muted); }
 .cs-pending p { margin: 0 0 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }

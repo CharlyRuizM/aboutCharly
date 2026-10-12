@@ -1,12 +1,13 @@
 import type { CaseStory } from '../../types'
 
-// Textos basados en la narrativa de la animación del caso (40 s, 10 escenas).
+// Textos basados en la narrativa de la animación del caso y en las respuestas de Carlos.
 export const propagaMobile: CaseStory = {
   tagline: 'De más de 20 IDs a <em>un solo número.</em>',
   meta: [
     { label: 'Rol', value: 'Product Manager' },
     { label: 'Producto', value: 'Primera app móvil de Propaga' },
-    { label: 'Modelo', value: 'Crédito B2B2C' },
+    { label: 'Equipo', value: 'Producto + Tech' },
+    { label: 'Fecha', value: 'Q3 2026' },
   ],
   media: { label: 'Animación del caso · 40 s' },
   sections: [
@@ -38,20 +39,25 @@ export const propagaMobile: CaseStory = {
       id: 'decision',
       label: 'Decisión',
       heading: 'El celular se volvió <em>la identidad única</em> del tendero.',
-      body: ['Propaga centralizó la identidad del cliente en un solo número. Los IDs de cada distribuidor siguieron existiendo, pero ya no eran lo que el tendero necesitaba recordar.'],
-      pending: [
-        '¿Qué alternativas evaluaron (ID propio de Propaga, CURP, QR) y por qué se descartaron?',
-        '¿Qué riesgos traía el celular (números compartidos, cambios de número, fraude) y cómo se mitigaron?',
+      body: ['Propaga centralizó la identidad del cliente en un solo número. Antes de elegirlo evaluamos otras opciones:'],
+      options: [
+        { name: 'ID propio de Propaga', verdict: 'Descartada', reason: 'Iba a confundir: muchos tenderos no distinguían a Propaga del distribuidor y creían que el crédito era de la marca, no de un tercero.' },
+        { name: 'CURP', verdict: 'Descartada', reason: 'Demasiado larga para recordarla en cada compra.' },
+        { name: 'Código QR', verdict: 'Descartada', reason: 'La adopción iba a ser difícil: en México el QR no se usa tanto como en otros mercados, como China.' },
+        { name: 'Número celular', verdict: 'Elegida', reason: 'Ya lo conocen, lo usan a diario y no hay que enseñarlo.' },
+      ],
+      after: [
+        'El celular también traía su fricción: <b>los cambios de número.</b> La resolvimos automatizando el proceso: el tendero ingresa su nuevo número y valida su identidad con un KYC.',
       ],
     },
     {
       id: 'ejecucion',
       label: 'Ejecución',
-      heading: 'Tres pasos para <em>usar su crédito.</em>',
-      body: ['La primera app móvil de Propaga redujo la compra a crédito a tres pasos: el tendero da su celular, confirma la compra y usa su crédito, con cualquier distribuidor de la red.'],
-      pending: [
-        '¿Con quién trabajaste (equipo, distribuidores) y cuánto tomó?',
-        '¿Cómo validaron la solución con tenderos antes de lanzarla?',
+      heading: 'Tres meses, <em>de la tienda al rollout.</em>',
+      body: [
+        'El objetivo era lanzar en tres meses. Trabajé con mi equipo de producto, sobre todo con mi Head of Product, y con Tech para definir el alcance técnico, los tiempos y las prioridades.',
+        'Para validar, hicimos <b>entrevistas en persona</b> con tenderos que ya eran clientes y con otros que todavía no lo eran.',
+        'Mi parte fue diseñar el flujo de registro, la forma de pago y el cross-selling, y priorizar las tareas de los equipos de product design y Tech. El resultado: comprar a crédito en tres pasos. El tendero da su celular, confirma la compra y usa su crédito, con cualquier distribuidor de la red.',
       ],
     },
     {
@@ -59,10 +65,20 @@ export const propagaMobile: CaseStory = {
       label: 'Impacto',
       heading: 'Ya no hacía falta registrarse <em>con cada distribuidor.</em>',
       body: [
-        'Para activar su crédito bastaba con su número. El crédito dejó de estar limitado al distribuidor que originó al cliente.',
-        'Eso eliminó una restricción del modelo y abrió <b>oportunidades de cross-selling</b> entre distribuidores.',
+        'Para activar su crédito bastaba con su número. El crédito dejó de estar limitado al distribuidor que originó al cliente, lo que eliminó una restricción del modelo y abrió <b>oportunidades de cross-selling</b> entre distribuidores.',
       ],
-      pending: ['¿Hay métricas que lo respalden (adopción, compras con más de un distribuidor, errores o tickets de soporte)?'],
+      list: {
+        title: 'Cómo medimos el éxito',
+        items: [
+          'Descargas y uso de la app.',
+          'Tiempo de registro.',
+          'Tenderos que usan su crédito con un distribuidor distinto al que los originó.',
+        ],
+      },
+      after: [
+        'El lanzamiento fue gradual. En esta primera versión la prioridad del rollout era encontrar y corregir la mayor cantidad de bugs lo antes posible.',
+      ],
+      pending: ['Resultados del rollout cuando los tengas: descargas, tiempo de registro y % de tenderos que usan su crédito con otro distribuidor.'],
     },
   ],
   beforeAfter: { before: '20+ IDs', after: '1 número', line: 'Un tendero · un número · varios distribuidores' },

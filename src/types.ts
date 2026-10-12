@@ -3,6 +3,9 @@ export type CaseSection = {
   label: string // etiqueta corta para el índice (Contexto, Problema…)
   heading: string // admite <em> para el énfasis en itálica
   body: string[] // párrafos; admiten <b> y <em>
+  options?: { name: string; verdict: 'Elegida' | 'Descartada'; reason: string }[] // alternativas evaluadas
+  after?: string[] // párrafos después de las alternativas
+  list?: { title: string; items: string[] } // lista corta (p. ej. métricas)
   pending?: string[] // preguntas por responder; se muestran como nota mientras existan
 }
 

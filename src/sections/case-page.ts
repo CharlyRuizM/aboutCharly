@@ -13,6 +13,14 @@ export function renderCasePage(c: CaseStudy) {
         <p class="cs-eyebrow"><span>${pad(i + 1)}</span>${x.label}</p>
         <h2 id="${x.id}-t">${x.heading}</h2>
         ${x.body.map(p => `<p>${p}</p>`).join('')}
+        ${x.options ? `<div class="cs-options" role="table" aria-label="Alternativas evaluadas">${x.options.map(o => `
+          <div class="cs-option${o.verdict === 'Elegida' ? ' is-chosen' : ''}" role="row">
+            <span role="cell" class="cs-option-name">${o.name}</span>
+            <span role="cell" class="cs-option-verdict">${o.verdict}</span>
+            <span role="cell" class="cs-option-reason">${o.reason}</span>
+          </div>`).join('')}</div>` : ''}
+        ${x.list ? `<div class="cs-list"><p>${x.list.title}</p><ul>${x.list.items.map(it => `<li>${it}</li>`).join('')}</ul></div>` : ''}
+        ${(x.after ?? []).map(p => `<p>${p}</p>`).join('')}
         ${x.pending?.length ? `<aside class="cs-pending" aria-label="Por completar"><p>Por completar</p><ul>${x.pending.map(q => `<li>${q}</li>`).join('')}</ul></aside>` : ''}
       </section>`)
     .join('')
