@@ -44,6 +44,27 @@ export function renderVisual(v: Visual, root = './'): string {
     case 'steps':
       return `
         <ol class="v v-steps reveal">${v.steps.map((s, i) => `<li style="--i:${i}"><span>${String(i + 1).padStart(2, '0')}</span>${s}</li>`).join('')}</ol>`
+    case 'gallery':
+      return `
+        <figure class="v v-gallery reveal">
+          <ul>${v.images.map((m, i) => `
+            <li style="--i:${i}">
+              <img src="${root}${m.src}" width="${m.width}" height="${m.height}" alt="${m.alt}" loading="lazy" decoding="async">
+              <span>${m.caption}</span>
+            </li>`).join('')}</ul>
+          <figcaption>${v.caption}</figcaption>
+        </figure>`
+    case 'metrics':
+      return `
+        <dl class="v v-metrics reveal">${v.items.map((m, i) => `
+          <div style="--i:${i}"><dt>${m.label}</dt><dd><s>${m.before}</s><span aria-hidden="true">→</span><b>${m.after}</b></dd></div>`).join('')}
+        </dl>`
+    case 'compare':
+      return `
+        <div class="v v-compare reveal" role="table" aria-label="${v.columns[0]} contra ${v.columns[1]}">
+          <div class="v-compare-row is-head" role="row"><span role="columnheader"></span><span role="columnheader">${v.columns[0]}</span><span role="columnheader">${v.columns[1]}</span></div>
+          ${v.rows.map(r => `<div class="v-compare-row" role="row"><span role="rowheader">${r.label}</span><span role="cell">${r.before}</span><span role="cell">${r.after}</span></div>`).join('')}
+        </div>`
     case 'shot':
       return renderShot(v, root)
   }

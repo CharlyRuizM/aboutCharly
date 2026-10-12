@@ -56,3 +56,32 @@
 @media (max-width: 560px) {
   .v-identity, .v-steps { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Galería de capturas */
+.v-gallery { display: grid; gap: 12px; }
+.v-gallery ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; align-items: start; }
+.v-gallery li { display: grid; gap: 8px; }
+.v-gallery img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--color-border); }
+.v-gallery span { font-family: var(--font-mono); font-size: 12px; color: var(--color-muted); }
+
+/* Cifras antes → después */
+.v-metrics { display: grid; gap: 0; margin: 8px 0; border-top: 1px solid var(--color-border); }
+.v-metrics div { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 8px 20px; align-items: baseline; padding-block: 16px; border-bottom: 1px solid var(--color-border); }
+.v-metrics dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.v-metrics dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.v-metrics s { font-family: var(--font-mono); font-size: 15px; color: var(--color-dim); }
+.v-metrics dd > span { color: var(--color-muted); }
+.v-metrics b { font-family: var(--font-dot); font-weight: 700; font-size: clamp(28px, 3.4vw, 44px); line-height: 1; font-variant-numeric: tabular-nums; }
+
+/* Tabla comparativa */
+.v-compare { display: grid; border-top: 1px solid var(--color-text); font-size: 15px; }
+.v-compare-row { display: grid; grid-template-columns: minmax(0, 10rem) minmax(0, 1fr) minmax(0, 1fr); gap: 8px 20px; padding-block: 12px; border-bottom: 1px solid var(--color-border); }
+.v-compare-row.is-head span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.v-compare-row [role="rowheader"] { color: var(--color-muted); }
+.v-compare-row [role="cell"]:nth-child(2) { color: var(--color-dim); }
+
+@media (max-width: 560px) {
+  .v-metrics div, .v-compare-row { grid-template-columns: minmax(0, 1fr); }
+  .v-compare-row.is-head { display: none; }
+  .v-compare-row [role="cell"]:nth-child(2) { text-decoration: line-through; }
+}

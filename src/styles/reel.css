@@ -31,6 +31,20 @@
 .scene-screens .r-img:nth-child(1) { left: 5%; top: 6%; rotate: -2.5deg; }
 .scene-screens .r-img:nth-child(2) { right: 5%; bottom: 6%; rotate: 2deg; }
 
+/* Capturas sin marco de teléfono: el marco lo pone el sitio */
+.r-img.is-screen { height: 84%; width: auto; max-width: 48%; object-fit: cover; object-position: top; border: 1px solid var(--color-border); border-radius: 18px; }
+.scene-screens .r-img:only-child { inset: 0; margin: auto; rotate: 0deg; max-width: 70%; }
+
+/* Escena: cifras antes → después */
+.scene-metric { display: grid; align-content: center; gap: clamp(20px, 4vh, 40px); padding: 0 clamp(20px, 4vw, 48px); }
+.r-metric { display: grid; gap: 8px; }
+.r-metric span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.r-metric p { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; }
+.r-metric s { font-family: var(--font-mono); font-size: clamp(18px, 2vw, 26px); color: var(--color-dim); }
+.r-metric b { font-family: var(--font-dot); font-weight: 700; font-size: clamp(44px, 6vw, 84px); line-height: 1; font-variant-numeric: tabular-nums; }
+.js .scene-metric .r-metric b { opacity: 0; translate: 0 12px; transition: opacity .5s ease, translate .6s cubic-bezier(.2, .8, .2, 1); transition-delay: calc(var(--i) * 250ms + 450ms); }
+.js .scene-metric.is-active .r-metric b { opacity: 1; translate: 0 0; }
+
 /* Con JS: escenario fijo y escenas apiladas que se activan con el scroll */
 .js .r-stage { position: sticky; top: max(96px, calc(50vh - 300px)); align-self: start; z-index: 2; background: var(--color-bg); padding-block: 8px; }
 .js .r-scenes { position: relative; display: block; height: clamp(380px, 60vh, 580px); }

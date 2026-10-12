@@ -6,8 +6,11 @@ export type Visual =
   | { type: 'identity'; store: string; phone: string; dists: string[]; ids: string[] } // antes / después
   | { type: 'steps'; steps: string[] } // flujo en pasos
   | { type: 'shot'; src: string; width: number; height: number; alt: string; caption: string } // captura (ruta en public/)
+  | { type: 'gallery'; caption: string; images: { src: string; width: number; height: number; alt: string; caption: string }[] } // varias capturas
+  | { type: 'metrics'; items: { label: string; before: string; after: string }[] } // cifras antes → después
+  | { type: 'compare'; columns: [string, string]; rows: { label: string; before: string; after: string }[] } // tabla antes / después
 
-export type ReelImage = { src: string; width: number; height: number; alt: string; kind: 'phone' | 'desktop' }
+export type ReelImage = { src: string; width: number; height: number; alt: string; kind: 'phone' | 'desktop' | 'screen' } // screen: captura sin marco
 
 // Escenas del resumen narrativo de la home
 export type ReelScene = {
@@ -16,7 +19,8 @@ export type ReelScene = {
   visual:
     | { type: 'burst'; store: string; ids: string[]; count: string } // una tienda, muchos IDs
     | { type: 'converge'; ids: string[]; label: string; phone: string } // los IDs se vuelven un número
-    | { type: 'screens'; images: ReelImage[] } // dos pantallas del producto
+    | { type: 'screens'; images: ReelImage[] } // una o dos pantallas del producto
+    | { type: 'metric'; items: { label: string; before: string; after: string }[] } // cifras antes → después
 }
 
 export type CaseSection = {
@@ -24,7 +28,7 @@ export type CaseSection = {
   label: string // etiqueta corta para el índice (Contexto, Problema…)
   heading: string // admite <em> para el énfasis en itálica
   body: string[] // párrafos; admiten <b> y <em>
-  options?: { name: string; verdict: 'Elegida' | 'Descartada'; reason: string }[] // alternativas evaluadas
+  options?: { name: string; verdict: 'Elegida' | 'Paso intermedio' | 'Descartada'; reason: string }[] // alternativas evaluadas
   visuals?: Visual[]
   list?: { title: string; items: string[] } // lista corta (p. ej. métricas)
   after?: string[] // párrafos al final de la sección

@@ -18,7 +18,9 @@ function scene(s: ReelScene, i: number, root: string) {
       ? `<div class="r-node"><span>Tienda</span>${v.store}</div>${chips(v.ids)}<p class="r-count"><b>${v.count}</b>IDs distintos</p>`
       : v.type === 'converge'
         ? `${chips(v.ids)}<div class="r-phone"><span>${v.label}</span><b>${v.phone}</b></div>`
-        : v.images.map(m => img(m, root)).join('')
+        : v.type === 'metric'
+          ? v.items.map((m, k) => `<div class="r-metric" style="--i:${k}"><span>${m.label}</span><p><s>${m.before}</s><b>${m.after}</b></p></div>`).join('')
+          : v.images.map(m => img(m, root)).join('')
   return `<div class="scene scene-${v.type}" data-scene="${i}">${inner}</div>`
 }
 
