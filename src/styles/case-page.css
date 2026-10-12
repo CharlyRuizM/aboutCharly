@@ -1,0 +1,49 @@
+/* Página de caso de estudio */
+.cs-head { display: grid; gap: 18px; padding-block: clamp(40px, 6vw, 88px) clamp(28px, 4vw, 48px); }
+.cs-back { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: var(--color-muted); justify-self: start; }
+.cs-back:hover { color: var(--color-text); }
+.cs-head h1 { font-family: var(--font-display); font-size: clamp(56px, 9vw, 128px); line-height: .9; letter-spacing: -.035em; }
+.cs-tagline { margin: 0; font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); line-height: 1.1; color: var(--color-muted); max-width: 30ch; }
+.cs-tagline em, .cs-section h2 em { color: var(--color-text); }
+.cs-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0 clamp(12px, 1.6vw, 24px); margin: 12px 0 0; }
+.cs-meta div { border-top: 1px solid var(--color-border); padding-top: 10px; display: grid; gap: 4px; }
+.cs-meta dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.cs-meta dd { margin: 0; font-size: 15px; }
+
+.cs-media { margin: 0 0 clamp(48px, 6vw, 88px); display: grid; gap: 10px; }
+.cs-media-box { aspect-ratio: 16 / 9; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
+.cs-media figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--color-muted); }
+
+.cs-body { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.cs-index { position: sticky; top: 24px; }
+.cs-index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.cs-index a { display: flex; gap: 12px; padding: 8px 0; font-family: var(--font-mono); font-size: 13px; color: var(--color-dim); transition: color .12s; }
+.cs-index a span { font-variant-numeric: tabular-nums; }
+.cs-index a:hover, .cs-index a.is-active { color: var(--color-text); }
+
+.cs-content { display: grid; gap: clamp(56px, 7vw, 104px); max-width: 720px; }
+.cs-section { display: grid; gap: 18px; scroll-margin-top: 32px; }
+.cs-eyebrow { margin: 0; display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.cs-section h2 { font-family: var(--font-display); font-size: clamp(32px, 3.6vw, 52px); line-height: 1.04; letter-spacing: -.02em; color: var(--color-muted); }
+.cs-section > p:not(.cs-eyebrow) { margin: 0; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.65; color: var(--color-muted); max-width: 62ch; }
+.cs-section b { color: var(--color-text); font-weight: 500; }
+
+/* Notas de contenido pendiente: visibles mientras el caso está en borrador */
+.cs-pending { border: 1px dashed var(--color-border); padding: 14px 18px; font-size: 14px; color: var(--color-muted); }
+.cs-pending p { margin: 0 0 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.cs-pending ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+
+.cs-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(12px, 1.6vw, 24px); margin-top: clamp(64px, 8vw, 120px); }
+.cs-ba div { border-top: 1px solid var(--color-text); padding-top: 12px; display: grid; gap: 10px; }
+.cs-ba span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.cs-ba b { font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 7vw, 104px); line-height: 1; letter-spacing: -.03em; }
+.cs-ba div:first-child b { color: var(--color-dim); text-decoration: line-through; text-decoration-thickness: 2px; }
+.cs-ba p { grid-column: 1 / -1; margin: 18px 0 0; font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-muted); }
+
+.cs-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-block: clamp(64px, 8vw, 120px) 48px; padding-top: 16px; border-top: 1px solid var(--color-border); font-family: var(--font-mono); font-size: 13px; }
+.cs-foot a:hover { color: var(--color-muted); }
+
+@media (max-width: 860px) {
+  .cs-body { grid-template-columns: minmax(0, 1fr); }
+  .cs-index { display: none; }
+}

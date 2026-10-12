@@ -30,6 +30,12 @@ npm run dev
 - `src/styles/<sección>.css`: estilos de cada sección.
 - `public/`: archivos públicos, como el favicon.
 
+## Páginas de casos
+
+- Cada caso con historia completa vive en `src/data/stories/<id>.ts` y se enlaza desde `cases.ts` (campo `story`).
+- Su página es `casos/<id>/index.html` (copia de `index.html` con su propio `<title>`); el build la detecta solo.
+- Las preguntas en `pending` se muestran como nota "Por completar" hasta que se borren.
+
 ## Cómo se renderiza
 
 Los componentes son funciones TypeScript que devuelven strings de HTML.

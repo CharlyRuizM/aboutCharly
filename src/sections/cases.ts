@@ -1,4 +1,4 @@
-import { cases } from '../data/cases'
+import { cases, caseHref } from '../data/cases'
 
 export function renderCases() {
   const tags = cases.map(c => `<a class="tag" href="#${c.id}">${c.title}</a>`).join('')
@@ -6,7 +6,7 @@ export function renderCases() {
     .map((c, i) => `
       <article class="case" id="${c.id}" aria-labelledby="${c.id}-t">
         <span class="case-n">${String(i + 1).padStart(2, '0')}</span>
-        <h3 id="${c.id}-t">${c.title}</h3>
+        <h3 id="${c.id}-t">${c.story ? `<a href="${caseHref(c.id)}">${c.title} <span aria-hidden="true">→</span></a>` : c.title}</h3>
         <p>${c.summary}</p>
         <div class="case-media" aria-hidden="true"></div>
       </article>`)
