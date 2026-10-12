@@ -1,5 +1,5 @@
 import { cases, caseHref } from '../data/cases'
-import { renderShot } from '../components/visuals'
+import { renderReel } from '../components/reel'
 import type { CaseStudy } from '../types'
 
 const pad = (n: number) => String(n).padStart(2, '0')
@@ -13,17 +13,11 @@ function renderCase(c: CaseStudy, i: number) {
 
   if (!s) return `<article class="case" id="${c.id}" aria-labelledby="${c.id}-t">${head}<div class="case-media" aria-hidden="true"></div></article>`
 
-  // Caso con historia: resumen en cuatro tiempos que aparece al hacer scroll
+  // Caso con historia: resumen narrativo que avanza con el scroll
   return `
     <article class="case has-story" id="${c.id}" aria-labelledby="${c.id}-t">
       ${head}
-      <div class="case-story">
-        <dl class="case-highlights">
-          ${s.highlights.map(h => `<div class="reveal"><dt>${h.label}</dt><dd>${h.text}</dd></div>`).join('')}
-        </dl>
-        ${s.cover ? renderShot(s.cover) : ''}
-        <a class="case-more reveal" href="${caseHref(c.id)}">Ver caso completo <span aria-hidden="true">→</span></a>
-      </div>
+      ${renderReel(s.reel, caseHref(c.id))}
     </article>`
 }
 

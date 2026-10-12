@@ -7,6 +7,18 @@ export type Visual =
   | { type: 'steps'; steps: string[] } // flujo en pasos
   | { type: 'shot'; src: string; width: number; height: number; alt: string; caption: string } // captura (ruta en public/)
 
+export type ReelImage = { src: string; width: number; height: number; alt: string; kind: 'phone' | 'desktop' }
+
+// Escenas del resumen narrativo de la home
+export type ReelScene = {
+  label: string
+  text: string
+  visual:
+    | { type: 'burst'; store: string; ids: string[]; count: string } // una tienda, muchos IDs
+    | { type: 'converge'; ids: string[]; label: string; phone: string } // los IDs se vuelven un número
+    | { type: 'screens'; images: ReelImage[] } // dos pantallas del producto
+}
+
 export type CaseSection = {
   id: string
   label: string // etiqueta corta para el índice (Contexto, Problema…)
@@ -22,8 +34,7 @@ export type CaseSection = {
 export type CaseStory = {
   tagline: string
   meta: { label: string; value: string }[]
-  highlights: { label: string; text: string }[] // resumen que aparece en la home
-  cover?: Extract<Visual, { type: 'shot' }> // imagen del resumen en la home
+  reel: ReelScene[] // resumen narrativo en la home, una escena por paso
   sections: CaseSection[]
   beforeAfter?: { before: string; after: string; line: string }
   media?: { label: string } // espacio reservado para la animación del caso

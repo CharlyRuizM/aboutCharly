@@ -8,9 +8,11 @@ import './styles/hero.css'
 import './styles/cases.css'
 import './styles/case-page.css'
 import './styles/visuals.css'
+import './styles/reel.css'
 import { typewriter } from './scripts/typewriter'
 import { activeLinks } from './scripts/active-tag'
 import { reveal } from './scripts/reveal'
+import { reel } from './scripts/reel'
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
 const typed = document.querySelector<HTMLElement>('[data-typed]')
@@ -18,3 +20,4 @@ if (typed && !reducedMotion) typewriter(typed)
 activeLinks('.tag', '.case')
 activeLinks('.cs-index a', '.cs-section')
 reveal()
+reel()

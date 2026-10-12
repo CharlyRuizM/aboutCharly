@@ -20,19 +20,34 @@ export const propagaMobile: CaseStory = {
     { label: 'Fecha', value: 'Q3 2026' },
   ],
   media: { label: 'Animación del caso · 40 s' },
-  highlights: [
-    { label: 'Problema', text: 'Un tendero manejaba más de 20 IDs, uno por distribuidor, para poder usar su crédito.' },
-    { label: 'Decisión', text: 'Usar su número celular como identidad única en toda la red.' },
-    { label: 'Ejecución', text: 'Primera app móvil de Propaga, con el objetivo de lanzar en 3 meses.' },
-    { label: 'Impacto', text: 'Crédito con cualquier distribuidor, no solo con el que lo registró.' },
+  reel: [
+    {
+      label: 'Problema',
+      text: 'Un tendero manejaba más de 20 IDs, uno por distribuidor, para poder usar su crédito.',
+      visual: { type: 'burst', store: 'Abarrotes Lupita', ids: [...IDS, '#40917', 'REF 2210384'], count: '20+' },
+    },
+    {
+      label: 'Decisión',
+      text: 'Usar su número celular como su identidad única en toda la red.',
+      visual: { type: 'converge', ids: [...IDS, '#40917', 'REF 2210384'], label: 'Número celular', phone: '55 8347 1920' },
+    },
+    {
+      label: 'Ejecución',
+      text: 'La primera app móvil de Propaga: el tendero vincula a sus proveedores y el distribuidor levanta el pedido con su celular.',
+      visual: { type: 'screens', images: [
+        { kind: 'phone', src: 'cases/propaga-mobile/app-proveedores.webp', width: 720, height: 1027, alt: 'App de Propaga: pantalla "Proveedores Propaga" con Mayco, Grupo Modelo y Rintin, hasta $15 mil de crédito para surtir y Surtace registrado.' },
+        { kind: 'desktop', src: 'cases/propaga-mobile/generar-orden-detalle.webp', width: 810, height: 570, alt: 'Portal del distribuidor: el pedido se levanta con el número de cliente o el celular a 10 dígitos.' },
+      ] },
+    },
+    {
+      label: 'Impacto',
+      text: 'Crédito con cualquier distribuidor de la red, y una línea que crece cuando paga a tiempo.',
+      visual: { type: 'screens', images: [
+        { kind: 'phone', src: 'cases/propaga-mobile/app-vinculacion.webp', width: 720, height: 760, alt: 'App de Propaga: vinculación exitosa con Grupo Modelo y la línea de crédito que aumenta de $5,000 a $7,500.' },
+        { kind: 'phone', src: 'cases/propaga-mobile/app-home.webp', width: 720, height: 1306, alt: 'App de Propaga: inicio con $5,000 de línea total, $4,150 disponibles para surtir y el próximo pago al día.' },
+      ] },
+    },
   ],
-  cover: {
-    ...SHOT,
-    src: 'cases/propaga-mobile/generar-orden-detalle.webp',
-    width: 810,
-    height: 570,
-    alt: 'Detalle del portal del distribuidor: el campo para levantar un pedido acepta el número de cliente o el celular a 10 dígitos.',
-  },
   sections: [
     {
       id: 'contexto',

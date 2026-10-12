@@ -1,0 +1,65 @@
+/* Resumen narrativo (home): pasos + escenario fijo que cambia de escena */
+.reel { grid-column: 2 / -1; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); grid-template-areas: 'steps stage'; gap: clamp(24px, 4vw, 64px); margin-top: 8px; }
+.r-stage { grid-area: stage; display: grid; gap: 12px; align-content: start; }
+.r-steps { grid-area: steps; display: grid; gap: 28px; align-content: start; }
+.r-seq { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.r-seq i { height: 3px; background: var(--color-border); transition: background-color .2s; }
+.r-seq i.is-active { background: var(--gradient-spectrum); }
+.r-scenes { display: grid; gap: 12px; }
+.scene { position: relative; height: clamp(380px, 60vh, 580px); overflow: hidden; border: 1px solid var(--color-border); background: radial-gradient(120% 90% at 50% 40%, var(--color-placeholder), var(--color-bg)); }
+
+.reel .r-label { margin: 0 0 10px; display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.reel .r-text { margin: 0; font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -.015em; max-width: 22ch; }
+.r-steps .case-more { margin-top: 12px; }
+
+/* Escena: tienda con muchos IDs */
+.r-node { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; gap: 2px; padding: 14px 18px; border: 1px solid var(--color-text); background: var(--color-bg); font-size: 17px; z-index: 1; }
+.r-node span, .r-phone span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.r-chip { position: absolute; left: var(--l); top: var(--t); translate: -50% -50%; padding: 8px 12px; border: 1px solid var(--color-border); background: var(--color-bg); font-family: var(--font-mono); font-size: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.reel .r-count { position: absolute; left: 18px; bottom: 14px; margin: 0; display: flex; gap: 10px; align-items: baseline; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.r-count b { font-family: var(--font-dot); font-weight: 700; font-size: 40px; letter-spacing: 0; color: var(--color-text); }
+
+/* Escena: los IDs convergen en el celular */
+.scene-converge .r-chip { color: var(--color-dim); text-decoration: line-through; }
+.r-phone { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; gap: 8px; justify-items: center; text-align: center; }
+.r-phone b { font-family: var(--font-dot); font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Escena: pantallas de la app */
+.r-img { position: absolute; display: block; max-width: none; border-radius: 14px; box-shadow: 0 24px 60px rgb(0 0 0 / .35); }
+.r-img.is-phone { height: 88%; width: auto; max-width: 54%; object-fit: cover; object-position: top; }
+.r-img.is-desktop { width: 62%; height: auto; border: 1px solid var(--color-border); }
+.scene-screens .r-img:nth-child(1) { left: 5%; top: 6%; rotate: -2.5deg; }
+.scene-screens .r-img:nth-child(2) { right: 5%; bottom: 6%; rotate: 2deg; }
+
+/* Con JS: escenario fijo y escenas apiladas que se activan con el scroll */
+.js .r-stage { position: sticky; top: max(96px, calc(50vh - 300px)); align-self: start; z-index: 2; background: var(--color-bg); padding-block: 8px; }
+.js .r-scenes { position: relative; display: block; height: clamp(380px, 60vh, 580px); }
+.js .scene { position: absolute; inset: 0; height: auto; opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s linear .45s; }
+.js .scene.is-active { opacity: 1; visibility: visible; transition: opacity .45s ease; }
+.js .r-step { min-height: 52vh; display: flex; flex-direction: column; justify-content: center; opacity: .3; transition: opacity .3s ease; }
+.js .r-step.is-active { opacity: 1; }
+
+/* Animaciones de cada escena */
+.js .scene-burst .r-chip { left: 50%; top: 50%; opacity: 0; transition: left .8s cubic-bezier(.2, .8, .2, 1), top .8s cubic-bezier(.2, .8, .2, 1), opacity .3s ease; transition-delay: calc(var(--i) * 70ms + 150ms); }
+.js .scene-burst.is-active .r-chip { left: var(--l); top: var(--t); opacity: 1; }
+.js .scene-burst .r-count { opacity: 0; transition: opacity .4s ease .9s; }
+.js .scene-burst.is-active .r-count { opacity: 1; }
+.js .scene-converge .r-chip { transition: left .7s cubic-bezier(.6, 0, .4, 1), top .7s cubic-bezier(.6, 0, .4, 1), opacity .5s ease; transition-delay: calc(var(--i) * 45ms + 250ms); }
+.js .scene-converge.is-active .r-chip { left: 50%; top: 50%; opacity: 0; }
+.js .scene-converge .r-phone { opacity: 0; scale: .92; transition: opacity .5s ease, scale .6s cubic-bezier(.2, .8, .2, 1); transition-delay: .85s; }
+.js .scene-converge.is-active .r-phone { opacity: 1; scale: 1; }
+.js .scene-screens .r-img { opacity: 0; translate: 0 36px; transition: opacity .5s ease, translate .7s cubic-bezier(.2, .8, .2, 1); }
+.js .scene-screens .r-img:nth-child(2) { transition-delay: .2s; }
+.js .scene-screens.is-active .r-img { opacity: 1; translate: 0 0; }
+
+@media (max-width: 900px) {
+  .reel { grid-column: auto; grid-template-columns: minmax(0, 1fr); grid-template-areas: 'stage' 'steps'; }
+  .js .r-stage { top: 84px; }
+  .scene, .js .r-scenes { height: min(42vh, 400px); }
+  .js .r-step { min-height: 46vh; }
+  .r-chip { font-size: 12px; padding: 6px 9px; }
+  .reel .r-text { font-size: 22px; }
+  .reel .r-count { left: 12px; bottom: 10px; }
+  .r-count b { font-size: 28px; }
+  .js .r-step { justify-content: flex-end; padding-bottom: 8vh; }
+}
