@@ -8,7 +8,7 @@ export function renderHeader(root = './') {
       <span class="site-label">${profile.role}</span>
       <span class="site-label">${profile.company} · ${profile.location}</span>
       <nav class="site-nav" aria-label="Principal">
-        <a href="${root}#casos">Casos</a>
+        <a href="${root}#trabajo">Trabajo</a>
         <a href="${root}#sobre-mi">Sobre mí</a>
         <a href="${root}#contacto">Contacto</a>
       </nav>

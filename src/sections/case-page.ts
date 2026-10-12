@@ -33,14 +33,14 @@ export function renderCasePage(c: CaseStudy) {
   return `
     <article class="cs" aria-labelledby="cs-title">
       <header class="cs-head">
-        <a class="cs-back" href="${ROOT}#casos">← Casos de estudio</a>
+        <a class="cs-back" href="${ROOT}#trabajo">← Trabajo</a>
         <h1 id="cs-title">${c.title}</h1>
         <p class="cs-tagline">${s.tagline}</p>
         <dl class="cs-meta">${s.meta.map(m => `<div><dt>${m.label}</dt><dd>${m.value}</dd></div>`).join('')}</dl>
       </header>
       ${s.media ? `<figure class="cs-media"><div class="cs-media-box" role="img" aria-label="${s.media.label} (pendiente)"></div><figcaption>${s.media.label}</figcaption></figure>` : ''}
       <div class="cs-body">
-        <nav class="cs-index" aria-label="Secciones del caso"><ol>${index}</ol></nav>
+        <nav class="cs-index" aria-label="Secciones del proyecto"><ol>${index}</ol></nav>
         <div class="cs-content">${sections}</div>
       </div>
       ${s.beforeAfter ? `
@@ -50,7 +50,7 @@ export function renderCasePage(c: CaseStudy) {
         <p>${s.beforeAfter.line}</p>
       </section>` : ''}
       <footer class="cs-foot">
-        <a href="${ROOT}#casos">← Todos los casos</a>
+        <a href="${ROOT}#trabajo">← Todo el trabajo</a>
         ${next && next.id !== c.id ? `<a href="${caseHref(next.id, ROOT)}">Siguiente: ${next.title} →</a>` : ''}
       </footer>
     </article>`

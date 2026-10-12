@@ -24,9 +24,9 @@ function renderCase(c: CaseStudy, i: number) {
 export function renderCases() {
   const tags = cases.map(c => `<a class="tag" href="#${c.id}">${c.title}</a>`).join('')
   return `
-    <section class="cases" id="casos" aria-labelledby="casos-t">
-      <header class="cases-head"><h2 id="casos-t">Casos de estudio</h2><span>${pad(cases.length)}</span></header>
-      <div class="tagbar"><nav class="tags" aria-label="Casos de estudio">${tags}</nav></div>
+    <section class="cases" id="trabajo" aria-labelledby="trabajo-t">
+      <header class="cases-head"><h2 id="trabajo-t">Trabajo</h2><span>${pad(cases.length)}</span></header>
+      <div class="tagbar"><nav class="tags" aria-label="Proyectos">${tags}</nav></div>
       ${cases.map(renderCase).join('')}
     </section>`
 }

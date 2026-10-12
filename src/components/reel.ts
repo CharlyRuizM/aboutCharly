@@ -38,7 +38,7 @@ export function renderReel(scenes: ReelScene[], more: string, root = './') {
             <p class="r-label"><span>${pad(i + 1)}</span>${s.label}</p>
             <p class="r-text">${s.text}</p>
           </div>`).join('')}
-        <a class="case-more" href="${more}">Ver caso completo <span aria-hidden="true">→</span></a>
+        <a class="case-more" href="${more}">Ver proyecto <span aria-hidden="true">→</span></a>
       </div>
     </div>`
 }
