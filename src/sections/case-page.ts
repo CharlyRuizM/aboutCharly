@@ -1,5 +1,6 @@
 import { cases, caseHref } from '../data/cases'
 import type { CaseStudy } from '../types'
+import { renderVisual } from '../components/visuals'
 
 const ROOT = '../../'
 const pad = (n: number) => String(n).padStart(2, '0')
@@ -19,6 +20,7 @@ export function renderCasePage(c: CaseStudy) {
             <span role="cell" class="cs-option-verdict">${o.verdict}</span>
             <span role="cell" class="cs-option-reason">${o.reason}</span>
           </div>`).join('')}</div>` : ''}
+        ${(x.visuals ?? []).map(v => renderVisual(v, ROOT)).join('')}
         ${x.list ? `<div class="cs-list"><p>${x.list.title}</p><ul>${x.list.items.map(it => `<li>${it}</li>`).join('')}</ul></div>` : ''}
         ${(x.after ?? []).map(p => `<p>${p}</p>`).join('')}
         ${x.pending?.length ? `<aside class="cs-pending" aria-label="Por completar"><p>Por completar</p><ul>${x.pending.map(q => `<li>${q}</li>`).join('')}</ul></aside>` : ''}

@@ -14,11 +14,24 @@
 .case-n { font-family: var(--font-mono); font-size: 12px; color: var(--color-muted); padding-top: .7em; font-variant-numeric: tabular-nums; }
 .case h3 { font-family: var(--font-display); font-size: clamp(32px, 3.6vw, 48px); line-height: 1; letter-spacing: -.02em; }
 .case h3 a:hover { color: var(--color-muted); }
-.case h3 a span { font-family: var(--font-sans); font-size: .5em; vertical-align: middle; }
 .case p { margin: 0; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.6; color: var(--color-muted); max-width: 48ch; }
 .case-media { grid-column: 2 / -1; aspect-ratio: 21 / 8; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
 
+/* Caso con historia: resumen que aparece al hacer scroll */
+.case-story { grid-column: 2 / -1; display: grid; gap: clamp(20px, 2.4vw, 32px); }
+.case-highlights { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(12px, 1.6vw, 24px); }
+.case-highlights div { border-top: 1px solid var(--color-text); padding-top: 12px; display: grid; gap: 8px; align-content: start; }
+.case-highlights div:nth-child(2) { transition-delay: 120ms; }
+.case-highlights div:nth-child(3) { transition-delay: 240ms; }
+.case-highlights div:nth-child(4) { transition-delay: 360ms; }
+.case-highlights dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.case-highlights dd { margin: 0; font-size: 15px; line-height: 1.5; }
+.case-story .v-shot { max-width: 640px; }
+.case-more { justify-self: start; display: inline-flex; gap: 10px; align-items: center; padding: 14px 22px; border: 1px solid var(--color-text); border-radius: 999px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; transition: background-color .15s, color .15s; }
+.case-more:hover { background: var(--color-text); color: var(--color-bg); }
+@media (max-width: 900px) { .case-highlights { grid-template-columns: 1fr 1fr; row-gap: 20px; } }
 @media (max-width: 720px) {
+  .case-story { grid-column: auto; }
   .case { grid-template-columns: minmax(0, 1fr); }
   .case-n { padding-top: 0; }
   .case-media { grid-column: auto; }

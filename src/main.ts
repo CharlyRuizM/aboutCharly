@@ -7,11 +7,14 @@ import './styles/layout.css'
 import './styles/hero.css'
 import './styles/cases.css'
 import './styles/case-page.css'
+import './styles/visuals.css'
 import { typewriter } from './scripts/typewriter'
 import { activeLinks } from './scripts/active-tag'
+import { reveal } from './scripts/reveal'
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
 const typed = document.querySelector<HTMLElement>('[data-typed]')
 if (typed && !reducedMotion) typewriter(typed)
 activeLinks('.tag', '.case')
 activeLinks('.cs-index a', '.cs-section')
+reveal()
