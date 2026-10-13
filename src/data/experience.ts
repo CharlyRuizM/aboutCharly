@@ -1,5 +1,5 @@
 // Experiencia profesional, basada en el CV de Carlos (10/2026).
-export type Job = { company: string; role: string; period: string; summary?: string; highlights?: string[] }
+export type Job = { company: string; role: string; period: string; summary?: string; highlights?: string[]; earlier?: { role: string; period: string }[] } // earlier: puestos anteriores en la misma empresa
 
 export const experienceIntro = 'Me he especializado en adquisición, activación, lanzamiento de nuevos productos y programas de lealtad, sobre todo en fintech y servicios financieros.'
 
@@ -32,14 +32,14 @@ export const jobs: Job[] = [
   {
     company: 'Wakkamole',
     role: 'UX/UI Designer',
-    period: '01/2021 – 07/2023',
+    period: '01/2020 – 07/2023',
+    earlier: [{ role: 'Performance Marketing & UI/UX Consultant', period: '01/2020 – 01/2021' }],
     summary: 'Más de 20 productos digitales para 10+ marcas como LEGO, Juguetrón, José Cuervo y Punta del Cielo.',
     highlights: [
       'Rediseño de la experiencia de compra: −30% de abandono de carrito y −35% de tiempo de compra.',
       'Introduje los design sprints en el equipo y desarrollé la primera PWA in house.',
     ],
   },
-  { company: 'Independiente', role: 'Performance Marketing & UI/UX Consultant', period: '01/2020 – 01/2021' },
   { company: 'Albur BTL Agency', role: 'Digital Marketing', period: '05/2019 – 10/2019' },
 ]
 

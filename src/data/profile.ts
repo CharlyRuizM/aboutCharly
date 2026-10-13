@@ -8,6 +8,6 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/carlosruizmejia', // si está vacío no se muestra
   photo: 'carlos.webp', // ruta en public/; si está vacío no se muestra
   // Primera línea visible sin JS; el resto rota con la animación de escritura.
-  typedLines: ['Product Manager.', 'lanzo productos nuevos.', 'diseño con datos.', 'y me gusta el ritmo.'],
-  bio: 'Más de 7 años entre producto, UX y software engineering. En Propaga diseñé productos de crédito para <b>tenderos y tienditas</b>, conectándolos con distribuidores y marcas como Grupo Modelo, Nestlé y Mondelez. Me gustan los problemas difíciles, las decisiones claras y medir lo que pasa después.',
+  typedLines: ['Product Manager.', 'hago producto basado en datos.', 'lanzo productos nuevos.', 'diseño programas de lealtad.'],
+  bio: 'Diseño iniciativas de producto para <b>fintechs y bancos</b>: lanzamientos, adquisición, activación y programas de lealtad que retienen. He trabajado con Citibanamex, Santander y Banorte, y con fintechs como Propaga. Más de 7 años entre producto, UX y software engineering, siempre midiendo lo que pasa después.',
 }

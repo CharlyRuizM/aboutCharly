@@ -8,6 +8,7 @@ export function renderExperience(root = './') {
       <div class="job-head">
         <h3>${j.company}</h3>
         <p class="job-role">${j.role}</p>
+        ${(j.earlier ?? []).map(e => `<p class="job-earlier">Antes: ${e.role} · ${e.period}</p>`).join('')}
       </div>
       <div class="job-body">
         ${j.summary ? `<p>${j.summary}</p>` : ''}
