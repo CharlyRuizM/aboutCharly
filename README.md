@@ -36,6 +36,12 @@ npm run dev
 - Su página es `casos/<id>/index.html` (copia de `index.html` con su propio `<title>`); el build la detecta solo.
 - Las preguntas en `pending` se muestran como nota "Por completar" hasta que se borren.
 
+## Proyectos en progreso
+
+- En `src/data/cases.ts`, `status: 'wip'` muestra el proyecto solo con título, etiqueta "En progreso" y su línea de resumen, sin página propia.
+- Para publicarlo completo: agrega su `story` y quita `status: 'wip'`.
+- Las notas `pending` ("Por completar") solo se ven en `npm run dev`, nunca en el build público.
+
 ## Cómo se renderiza
 
 Los componentes son funciones TypeScript que devuelven strings de HTML.
@@ -54,5 +60,5 @@ El código de `render.ts`, `components/`, `sections/` y `data/` no se envía al 
 
 - Repositorio: `git@github.com:CharlyRuizM/aboutCharly.git`.
 - Dirección visual: inspiración Daft Punk. La portada actual es una base mínima; el diseño y el contenido del book se desarrollarán después.
-- Publicación: por ahora solo local. El workflow `.github/workflows/deploy.yml` está listo pero solo corre a mano; cuando se active, en *Settings → Pages* la fuente debe ser **GitHub Actions**.
+- Publicación: GitHub Pages vía GitHub Actions en cada push a `main`. En *Settings → Pages* la fuente debe ser **GitHub Actions**.
 - Siguiente paso: definir el contenido de la homepage y los proyectos que se mostrarán.

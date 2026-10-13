@@ -11,7 +11,12 @@ function renderCase(c: CaseStudy, i: number) {
     <h3 id="${c.id}-t">${s ? `<a href="${caseHref(c.id)}">${c.title}</a>` : c.title}</h3>
     <p>${c.summary}</p>`
 
-  if (!s) return `<article class="case" id="${c.id}" aria-labelledby="${c.id}-t">${head}<div class="case-media" aria-hidden="true"></div></article>`
+  if (c.status === 'wip' || !s) return `
+    <article class="case is-wip" id="${c.id}" aria-labelledby="${c.id}-t">
+      <span class="case-n">${pad(i + 1)}</span>
+      <h3 id="${c.id}-t">${c.title}<span class="wip-badge">En progreso</span></h3>
+      ${c.summary ? `<p>${c.summary}</p>` : ''}
+    </article>`
 
   // Caso con historia: resumen narrativo que avanza con el scroll
   return `
@@ -22,7 +27,7 @@ function renderCase(c: CaseStudy, i: number) {
 }
 
 export function renderCases() {
-  const tags = cases.map(c => `<a class="tag" href="#${c.id}">${c.title}</a>`).join('')
+  const tags = cases.map(c => `<a class="tag${c.status === 'wip' ? ' is-wip' : ''}" href="#${c.id}">${c.title}</a>`).join('')
   return `
     <section class="cases" id="trabajo" aria-labelledby="trabajo-t">
       <header class="cases-head"><h2 id="trabajo-t">Trabajo</h2><span>${pad(cases.length)}</span></header>

@@ -1,7 +1,7 @@
 import { existsSync, readdirSync } from 'node:fs'
 import { defineConfig, runnerImport, type Plugin } from 'vite'
 
-type RenderModule = { renderPage: (path: string) => string }
+type RenderModule = { renderPage: (path: string, opts?: { draft?: boolean }) => string }
 const RENDER_ENTRY = '/src/render.ts'
 const RENDER_SOURCES = /\/src\/(render\.ts$|(components|sections|data|types)[/.])/
 
@@ -13,7 +13,7 @@ function prerender(): Plugin {
       const { renderPage } = ctx.server
         ? ((await ctx.server.ssrLoadModule(RENDER_ENTRY)) as RenderModule)
         : (await runnerImport<RenderModule>(RENDER_ENTRY, { configFile: false })).module
-      return html.replace('<!--app-->', renderPage(ctx.path))
+      return html.replace('<!--app-->', renderPage(ctx.path, { draft: !!ctx.server }))
     },
     // En dev, recarga la página cuando cambia algo que se renderiza en Node.
     handleHotUpdate({ file, server }) {

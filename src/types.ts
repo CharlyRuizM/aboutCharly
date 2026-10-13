@@ -57,4 +57,5 @@ export type CaseStudy = {
   title: string
   summary: string
   story?: CaseStory // si existe, el caso tiene página propia en /casos/<id>/
+  status?: 'wip' // en progreso: se muestra en la lista solo con título y una línea
 }

@@ -1,6 +1,6 @@
 /* Hero compacto: foto · saludo · bio. No ocupa todo el viewport para que asomen los casos. */
 .hero { display: grid; grid-template-columns: clamp(96px, 13vw, 170px) minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 44px); align-items: start; padding-block: clamp(48px, 7vw, 96px) clamp(40px, 5vw, 72px); }
-.hero-portrait { aspect-ratio: 4 / 5; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
+.hero-portrait { display: block; width: 100%; height: auto; object-fit: cover; aspect-ratio: 4 / 5; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
 .hero-hello { font-family: var(--font-display); font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -.025em; }
 .hero-name { font-style: italic; cursor: default; }
 /* Easter egg: el nombre cambia a la Daft Font al pasar el cursor */

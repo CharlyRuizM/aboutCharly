@@ -5,7 +5,7 @@ import { renderVisual } from '../components/visuals'
 const ROOT = '../../'
 const pad = (n: number) => String(n).padStart(2, '0')
 
-export function renderCasePage(c: CaseStudy) {
+export function renderCasePage(c: CaseStudy, draft = false) {
   const s = c.story!
   const index = s.sections.map((x, i) => `<li><a href="#${x.id}"><span>${pad(i + 1)}</span>${x.label}</a></li>`).join('')
   const sections = s.sections
@@ -23,12 +23,12 @@ export function renderCasePage(c: CaseStudy) {
         ${(x.visuals ?? []).map(v => renderVisual(v, ROOT)).join('')}
         ${x.list ? `<div class="cs-list"><p>${x.list.title}</p><ul>${x.list.items.map(it => `<li>${it}</li>`).join('')}</ul></div>` : ''}
         ${(x.after ?? []).map(p => `<p>${p}</p>`).join('')}
-        ${x.pending?.length ? `<aside class="cs-pending" aria-label="Por completar"><p>Por completar</p><ul>${x.pending.map(q => `<li>${q}</li>`).join('')}</ul></aside>` : ''}
+        ${draft && x.pending?.length ? `<aside class="cs-pending" aria-label="Por completar"><p>Por completar</p><ul>${x.pending.map(q => `<li>${q}</li>`).join('')}</ul></aside>` : ''}
       </section>`)
     .join('')
 
   const i = cases.findIndex(x => x.id === c.id)
-  const next = cases.slice(i + 1).concat(cases.slice(0, i)).find(x => x.story)
+  const next = cases.slice(i + 1).concat(cases.slice(0, i)).find(x => x.story && x.status !== 'wip')
 
   return `
     <article class="cs" aria-labelledby="cs-title">
