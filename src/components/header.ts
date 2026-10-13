@@ -5,11 +5,11 @@ export function renderHeader(root = './') {
   return `
     <header class="site-header">
       <a class="wordmark" href="${root}" aria-label="${profile.siteName}, inicio">about<em>Charly</em>.</a>
-      <span class="site-label">${profile.role}</span>
-      <span class="site-label">${profile.company} · ${profile.location}</span>
       <nav class="site-nav" aria-label="Principal">
         <a href="${root}#trabajo">Trabajo</a>
+        <a href="${root}#experiencia">Experiencia</a>
         <a href="#contacto">Contacto</a>
+        <a class="cv-link" href="${root}${profile.cv}" download>CV <span aria-hidden="true">↓</span></a>
       </nav>
     </header>`
 }

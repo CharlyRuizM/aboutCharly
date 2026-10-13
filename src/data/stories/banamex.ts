@@ -13,7 +13,7 @@ const CANJE = img('canje', 640, 1000, 'Conciertos Privados: confirmación de can
 export const banamex: CaseStory = {
   tagline: 'De un beneficio exclusivo <em>a toda la base de tarjetahabientes.</em>',
   meta: [
-    { label: 'Rol', value: 'Product Designer · Fidelity Marketing' },
+    { label: 'Rol', value: 'UX Engineer Sr · Fidelity Marketing' },
     { label: 'Cliente', value: 'Citibanamex' },
     { label: 'Producto', value: 'Web de canje de puntos y pago mixto' },
     { label: 'Año', value: '2024' },
@@ -52,7 +52,7 @@ export const banamex: CaseStory = {
       label: 'Contexto',
       heading: 'Un banco que quería <em>reforzar su entretenimiento.</em>',
       body: [
-        'En 2024, Citibanamex quería reforzar su oferta de entretenimiento después de separarse de su principal socio. Desde Fidelity Marketing, como Product Designer en un equipo multidisciplinario, lanzamos Conciertos Privados: una plataforma web y móvil para conseguir boletos de conciertos exclusivos con puntos.',
+        'En 2024, Citibanamex quería reforzar su oferta de entretenimiento después de separarse de su principal socio. Desde Fidelity Marketing, como UX Engineer Sr en un equipo multidisciplinario, lanzamos Conciertos Privados: una plataforma web y móvil para conseguir boletos de conciertos exclusivos con puntos.',
         'El primer lanzamiento fue <b>The Killers</b>, solo para clientes ThankYou y con canje 100% en puntos.',
       ],
     },
