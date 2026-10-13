@@ -12,7 +12,7 @@ export type Visual =
   | { type: 'identity'; store: string; phone: string; dists: string[]; ids: string[] } // antes / después
   | { type: 'steps'; steps: string[] } // flujo en pasos
   | { type: 'shot'; src: string; width: number; height: number; alt: string; caption: string } // captura (ruta en public/)
-  | { type: 'gallery'; caption: string; images: { src: string; width: number; height: number; alt: string; caption: string }[] } // varias capturas
+  | { type: 'gallery'; caption: string; wide?: boolean; images: { src: string; width: number; height: number; alt: string; caption: string }[] } // varias capturas
   | { type: 'metrics'; items: { label: string; before: string; after: string }[] } // cifras antes → después
   | { type: 'compare'; columns: [string, string]; rows: { label: string; before: string; after: string }[] } // tabla antes / después
 

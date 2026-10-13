@@ -24,7 +24,7 @@ function scene(s: ReelScene, i: number, root: string) {
         : v.type === 'tiers'
           ? renderTiers(v)
         : v.type === 'metric'
-          ? v.items.map((m, k) => `<div class="r-metric" style="--i:${k}"><span>${m.label}</span><p><s>${m.before}</s><b>${m.after}</b></p></div>`).join('')
+          ? v.items.map((m, k) => `<div class="r-metric" style="--i:${k}"><span>${m.label}</span><p>${m.before ? `<s>${m.before}</s>` : ''}<b>${m.after}</b></p></div>`).join('')
           : v.images.map(m => img(m, root)).join('')
   return `<div class="scene scene-${v.type}" data-scene="${i}">${inner}</div>`
 }

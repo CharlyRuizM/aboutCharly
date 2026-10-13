@@ -47,7 +47,7 @@ export function renderVisual(v: Visual, root = './'): string {
         <ol class="v v-steps reveal">${v.steps.map((s, i) => `<li style="--i:${i}"><span>${String(i + 1).padStart(2, '0')}</span>${s}</li>`).join('')}</ol>`
     case 'gallery':
       return `
-        <figure class="v v-gallery reveal">
+        <figure class="v v-gallery${v.wide ? ' is-wide' : ''} reveal">
           <ul>${v.images.map((m, i) => `
             <li style="--i:${i}">
               <img src="${root}${m.src}" width="${m.width}" height="${m.height}" alt="${m.alt}" loading="lazy" decoding="async">
@@ -58,7 +58,7 @@ export function renderVisual(v: Visual, root = './'): string {
     case 'metrics':
       return `
         <dl class="v v-metrics reveal">${v.items.map((m, i) => `
-          <div style="--i:${i}"><dt>${m.label}</dt><dd><s>${m.before}</s><span aria-hidden="true">→</span><b>${m.after}</b></dd></div>`).join('')}
+          <div style="--i:${i}"><dt>${m.label}</dt><dd>${m.before ? `<s>${m.before}</s><span aria-hidden="true">→</span>` : ''}<b>${m.after}</b></dd></div>`).join('')}
         </dl>`
     case 'compare':
       return `

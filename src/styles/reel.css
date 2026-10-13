@@ -77,3 +77,6 @@
   .r-count b { font-size: 28px; }
   .js .r-step { justify-content: flex-end; padding-bottom: 8vh; }
 }
+
+/* Una sola captura de escritorio: más grande y centrada */
+.scene-screens .r-img.is-desktop:only-child { width: 88%; max-width: 88%; height: auto; }
