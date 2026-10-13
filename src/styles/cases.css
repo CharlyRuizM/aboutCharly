@@ -8,6 +8,7 @@
 .tag { flex: none; font: 500 13px/1 var(--font-mono); letter-spacing: .03em; color: var(--color-muted); padding: 10px 16px; border-radius: 999px; border: 1px solid transparent; transition: color .12s, border-color .12s, background-color .12s; }
 .tag:hover { color: var(--color-text); border-color: var(--color-border); }
 .tag.is-active { color: var(--color-bg); background: var(--color-text); }
+.tag.is-active::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 8px; border-radius: 50%; background: var(--color-accent); vertical-align: 1px; }
 .tag:focus-visible { outline-offset: 2px; }
 
 .case { display: grid; grid-template-columns: 64px minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(16px, 2vw, 28px); padding-block: clamp(32px, 4vw, 48px); border-bottom: 1px solid var(--color-border); scroll-margin-top: 88px; }
@@ -18,7 +19,7 @@
 .case-media { grid-column: 2 / -1; aspect-ratio: 21 / 8; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
 
 .case-more { justify-self: start; display: inline-flex; gap: 10px; align-items: center; padding: 14px 22px; border: 1px solid var(--color-text); border-radius: 999px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; transition: background-color .15s, color .15s; }
-.case-more:hover { background: var(--color-text); color: var(--color-bg); }
+.case-more:hover { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-on-accent); }
 @media (max-width: 720px) {
   .case { grid-template-columns: minmax(0, 1fr); }
   .case-n { padding-top: 0; }
@@ -29,7 +30,7 @@
 .case.is-wip { grid-template-columns: 64px minmax(0, 1.2fr) minmax(0, 1fr); align-items: baseline; padding-block: clamp(24px, 3vw, 32px); }
 .case.is-wip h3 { color: var(--color-muted); font-size: clamp(26px, 2.8vw, 36px); }
 .wip-badge { display: inline-flex; align-items: center; gap: 8px; margin-left: 14px; vertical-align: middle; font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-muted); }
-.wip-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--gradient-spectrum); animation: blink calc(var(--beat) * 2) steps(1) infinite; }
+.wip-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); animation: blink calc(var(--beat) * 2) steps(1) infinite; }
 .tag.is-wip { color: var(--color-dim); }
 
 /* Contacto */

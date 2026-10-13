@@ -20,6 +20,7 @@
 .cs-index a { display: flex; gap: 12px; padding: 8px 0; font-family: var(--font-mono); font-size: 13px; color: var(--color-dim); transition: color .12s; }
 .cs-index a span { font-variant-numeric: tabular-nums; }
 .cs-index a:hover, .cs-index a.is-active { color: var(--color-text); }
+.cs-index a.is-active span { color: var(--color-accent); }
 
 .cs-content { display: grid; gap: clamp(56px, 7vw, 104px); max-width: 720px; }
 .cs-section { display: grid; gap: 18px; scroll-margin-top: 32px; }
@@ -51,6 +52,7 @@
 .cs-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(12px, 1.6vw, 24px); margin-top: clamp(64px, 8vw, 120px); }
 .cs-ba div { border-top: 1px solid var(--color-text); padding-top: 12px; display: grid; gap: 10px; }
 .cs-ba span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.cs-ba div:last-child b { color: var(--color-accent); }
 .cs-ba b { font-family: var(--font-display); font-weight: 400; font-size: clamp(44px, 7vw, 104px); line-height: 1; letter-spacing: -.03em; }
 .cs-ba div:first-child b { color: var(--color-dim); text-decoration: line-through; text-decoration-thickness: 2px; }
 .cs-ba p { grid-column: 1 / -1; margin: 18px 0 0; font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-muted); }

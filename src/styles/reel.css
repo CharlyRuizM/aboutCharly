@@ -4,9 +4,9 @@
 .r-steps { grid-area: steps; display: grid; gap: 28px; align-content: start; }
 .r-seq { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .r-seq i { height: 3px; background: var(--color-border); transition: background-color .2s; }
-.r-seq i.is-active { background: var(--gradient-spectrum); }
+.r-seq i.is-active { background: var(--gradient-accent); }
 .r-scenes { display: grid; gap: 12px; }
-.scene { position: relative; height: clamp(380px, 60vh, 580px); overflow: hidden; border: 1px solid var(--color-border); background: radial-gradient(120% 90% at 50% 40%, var(--color-placeholder), var(--color-bg)); }
+.scene { position: relative; height: clamp(380px, 60vh, 580px); overflow: hidden; border: 1px solid var(--color-border); background: radial-gradient(120% 90% at 50% 40%, var(--color-tint), transparent 70%), var(--color-bg); }
 
 .reel .r-label { margin: 0 0 10px; display: flex; gap: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
 .reel .r-text { margin: 0; font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 34px); line-height: 1.12; letter-spacing: -.015em; max-width: 22ch; }
@@ -17,12 +17,12 @@
 .r-node span, .r-phone span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
 .r-chip { position: absolute; left: var(--l); top: var(--t); translate: -50% -50%; padding: 8px 12px; border: 1px solid var(--color-border); background: var(--color-bg); font-family: var(--font-mono); font-size: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .reel .r-count { position: absolute; left: 18px; bottom: 14px; margin: 0; display: flex; gap: 10px; align-items: baseline; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
-.r-count b { font-family: var(--font-dot); font-weight: 700; font-size: 40px; letter-spacing: 0; color: var(--color-text); }
+.r-count b { font-family: var(--font-dot); font-weight: 700; font-size: 40px; letter-spacing: 0; color: var(--color-accent); }
 
 /* Escena: los IDs convergen en el celular */
 .scene-converge .r-chip { color: var(--color-dim); text-decoration: line-through; }
 .r-phone { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; gap: 8px; justify-items: center; text-align: center; }
-.r-phone b { font-family: var(--font-dot); font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.r-phone b { color: var(--color-accent); font-family: var(--font-dot); font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 /* Escena: pantallas de la app */
 .r-img { position: absolute; display: block; max-width: none; border-radius: 14px; box-shadow: 0 24px 60px rgb(0 0 0 / .35); }
@@ -41,7 +41,7 @@
 .r-metric span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
 .r-metric p { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; }
 .r-metric s { font-family: var(--font-mono); font-size: clamp(18px, 2vw, 26px); color: var(--color-dim); }
-.r-metric b { font-family: var(--font-dot); font-weight: 700; font-size: clamp(44px, 6vw, 84px); line-height: 1; font-variant-numeric: tabular-nums; }
+.r-metric b { color: var(--color-accent); font-family: var(--font-dot); font-weight: 700; font-size: clamp(44px, 6vw, 84px); line-height: 1; font-variant-numeric: tabular-nums; }
 .js .scene-metric .r-metric b { opacity: 0; translate: 0 12px; transition: opacity .5s ease, translate .6s cubic-bezier(.2, .8, .2, 1); transition-delay: calc(var(--i) * 250ms + 450ms); }
 .js .scene-metric.is-active .r-metric b { opacity: 1; translate: 0 0; }
 

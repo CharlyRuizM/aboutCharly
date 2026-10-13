@@ -9,12 +9,12 @@
   --color-placeholder-2: #23262b;
   --color-glass: rgb(14 15 17 / .78);
 
-  /* Cromo (reservado para toques puntuales) */
-  --color-chrome: #d6dae0;
-  --gradient-chrome: linear-gradient(180deg, #ffffff 0%, #d9dde3 30%, #6b717a 50%, #f4f6f8 58%, #a9afb8 100%);
-  --gradient-spectrum: linear-gradient(90deg, #ff6b1f, #ffc629 25%, #6fe07a 50%, #3d7bff 75%, #7d3cff);
-  --spectrum-warm: rgb(255 122 36 / .9);
-  --spectrum-cool: rgb(91 72 255 / .9);
+  /* Color: azul cobalto y rosa de Interstella 5555. Se usa poco: estados, cifras y énfasis. */
+  --color-accent: #ff4fa3; /* rosa: estados activos, cifras, cursor */
+  --color-accent-2: #8f9bff; /* azul: énfasis en itálica */
+  --color-on-accent: #0e0f11;
+  --gradient-accent: linear-gradient(90deg, #3b4bff, #ff4fa3);
+  --color-tint: rgb(59 75 255 / .16); /* tinte de fondo de las escenas */
 
   /* Tipografía: humano (serif) + máquina (mono) */
   --font-display: 'Instrument Serif', Georgia, serif;
@@ -40,6 +40,10 @@
     --color-placeholder: #e0e1de;
     --color-placeholder-2: #d5d6d3;
     --color-glass: rgb(243 243 241 / .8);
-    --color-chrome: #5d636b;
+    --color-accent: #d6267a;
+    --color-accent-2: #2a39e0;
+    --color-on-accent: #ffffff;
+    --gradient-accent: linear-gradient(90deg, #2a39e0, #d6267a);
+    --color-tint: rgb(42 57 224 / .08);
   }
 }

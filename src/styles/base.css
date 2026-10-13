@@ -7,11 +7,6 @@ a:focus-visible { outline: 2px solid var(--color-text); outline-offset: 4px; }
 h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
 em { font-style: italic; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-/* Cromo: texto con relleno metálico y bordes de color */
-.chrome { color: var(--color-chrome); }
-@supports (background-clip: text) or (-webkit-background-clip: text) {
-  .chrome { background: var(--gradient-chrome); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 .022em .005em var(--spectrum-warm)) drop-shadow(.018em -.004em .006em var(--spectrum-cool)); }
-}
 .skip-link { position: absolute; top: 12px; left: 24px; padding: 12px; background: var(--color-text); color: var(--color-bg); transform: translateY(-200%); z-index: 10; }
 .skip-link:focus { transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } *, *::before, *::after { animation: none !important; transition: none !important; } }
