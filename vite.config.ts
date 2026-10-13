@@ -34,9 +34,9 @@ const casePages = existsSync('casos')
     )
   : {}
 
-export default defineConfig(({ command }) => ({
-  // En local se sirve en la raíz; el build usa la ruta de GitHub Pages.
-  base: command === 'build' ? '/aboutCharly/' : '/',
+export default defineConfig(() => ({
+  // Se sirve en la raíz del dominio (aboutcarlosruiz.com), en local y en producción.
+  base: '/',
   plugins: [prerender()],
   build: { rollupOptions: { input: { main: 'index.html', ...casePages } } },
 }))
