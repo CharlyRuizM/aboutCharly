@@ -1,4 +1,5 @@
 import type { Visual } from '../types'
+import { renderCurve, renderTiers } from './curve'
 
 // root: ruta relativa a la raíz del sitio, para las imágenes de public/.
 export function renderVisual(v: Visual, root = './'): string {
@@ -65,6 +66,10 @@ export function renderVisual(v: Visual, root = './'): string {
           <div class="v-compare-row is-head" role="row"><span role="columnheader"></span><span role="columnheader">${v.columns[0]}</span><span role="columnheader">${v.columns[1]}</span></div>
           ${v.rows.map(r => `<div class="v-compare-row" role="row"><span role="rowheader">${r.label}</span><span role="cell">${r.before}</span><span role="cell">${r.after}</span></div>`).join('')}
         </div>`
+    case 'curve':
+      return `<figure class="v v-curve reveal">${renderCurve(v)}<figcaption>${v.caption}</figcaption></figure>`
+    case 'tiers':
+      return `<div class="v reveal">${renderTiers(v)}</div>`
     case 'shot':
       return renderShot(v, root)
   }

@@ -15,7 +15,7 @@ export function renderCasePage(c: CaseStudy) {
         <h2 id="${x.id}-t">${x.heading}</h2>
         ${x.body.map(p => `<p>${p}</p>`).join('')}
         ${x.options ? `<div class="cs-options" role="table" aria-label="Alternativas evaluadas">${x.options.map(o => `
-          <div class="cs-option${o.verdict === 'Elegida' ? ' is-chosen' : o.verdict === 'Paso intermedio' ? ' is-step' : ''}" role="row">
+          <div class="cs-option${o.verdict === 'Elegida' ? ' is-chosen' : o.verdict === 'Paso intermedio' || o.verdict === 'Roadmap' ? ' is-step' : ''}" role="row">
             <span role="cell" class="cs-option-name">${o.name}</span>
             <span role="cell" class="cs-option-verdict">${o.verdict}</span>
             <span role="cell" class="cs-option-reason">${o.reason}</span>

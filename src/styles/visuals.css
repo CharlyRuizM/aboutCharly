@@ -85,3 +85,40 @@
   .v-compare-row.is-head { display: none; }
   .v-compare-row [role="cell"]:nth-child(2) { text-decoration: line-through; }
 }
+
+/* Curva de retención ilustrativa */
+.v-curve { display: grid; gap: 10px; }
+.v-curve-svg { display: block; width: 100%; height: auto; max-width: 100%; color: var(--color-text); overflow: visible; }
+.v-curve-svg text { font-family: var(--font-mono); font-size: 12px; fill: var(--color-muted); paint-order: stroke; stroke: var(--color-bg); stroke-width: 5px; stroke-linejoin: round; }
+.v-curve-svg .axis { stroke: var(--color-border); stroke-width: 1; }
+.v-curve-svg .area { fill: var(--color-text); opacity: .06; }
+.v-curve-svg .line { fill: none; stroke: var(--color-text); stroke-width: 2.5; stroke-linejoin: round; }
+.v-curve-svg circle { fill: var(--color-bg); stroke: var(--color-text); stroke-width: 2; }
+.v-curve-svg .threshold { stroke: var(--color-muted); stroke-width: 1; stroke-dasharray: 4 5; }
+.v-curve-svg .threshold-t { fill: var(--color-text); }
+.v-curve-svg .tick { text-anchor: middle; font-size: 11px; fill: var(--color-dim); }
+.v-curve-svg .axis-t { text-anchor: end; }
+.v-curve-svg .band { fill: var(--color-placeholder-2); }
+.v-curve-svg .band.b1 { fill: var(--color-border); }
+.v-curve-svg .band.b2 { fill: var(--color-text); }
+.v-curve-svg .band-t { stroke: none; text-anchor: middle; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; fill: var(--color-text); }
+.v-curve-svg .band-t.b2 { fill: var(--color-bg); }
+.js .reveal .v-curve-svg .line, .js .scene .v-curve-svg .line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s cubic-bezier(.4, 0, .2, 1) .2s; }
+.js .reveal.is-visible .v-curve-svg .line, .js .scene.is-active .v-curve-svg .line { stroke-dashoffset: 0; }
+
+/* Niveles */
+.v-tiers { list-style: none; margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.tier { position: relative; display: grid; gap: 8px; align-content: start; padding: 16px; border: 1px solid var(--color-border); border-top: 3px solid var(--color-dim); }
+.tier.t1 { border-top-color: var(--color-muted); }
+.tier.t2::before { content: ''; position: absolute; left: -1px; right: -1px; top: -3px; height: 3px; background: var(--gradient-spectrum); }
+.tier-name { font-family: var(--font-display); font-size: 26px; line-height: 1; }
+.tier-range, .tier-note { font-size: 13px; line-height: 1.45; color: var(--color-muted); }
+.tier-range { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.tier b { font-family: var(--font-dot); font-weight: 700; font-size: clamp(36px, 4vw, 52px); line-height: 1; }
+@media (max-width: 560px) { .v-tiers { grid-template-columns: minmax(0, 1fr); } }
+
+/* En el escenario de la home */
+.scene-curve, .scene-tiers { display: grid; align-content: center; padding: clamp(16px, 3vw, 36px); }
+.js .scene-tiers .tier { opacity: 0; translate: 0 16px; transition: opacity .45s ease, translate .6s cubic-bezier(.2, .8, .2, 1); transition-delay: calc(var(--i) * 180ms + 200ms); }
+.js .scene-tiers.is-active .tier { opacity: 1; translate: 0 0; }
+.scene-tiers .v-tiers { margin: 0; }

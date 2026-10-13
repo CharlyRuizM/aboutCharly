@@ -1,4 +1,5 @@
 import type { ReelScene, ReelImage } from '../types'
+import { renderCurve, renderTiers } from './curve'
 
 // Posiciones (left/top en %) donde caen los IDs dentro del escenario.
 const SPOTS = [[16, 20], [80, 16], [10, 52], [88, 50], [22, 84], [76, 84], [48, 9], [52, 92]]
@@ -18,6 +19,10 @@ function scene(s: ReelScene, i: number, root: string) {
       ? `<div class="r-node"><span>Tienda</span>${v.store}</div>${chips(v.ids)}<p class="r-count"><b>${v.count}</b>IDs distintos</p>`
       : v.type === 'converge'
         ? `${chips(v.ids)}<div class="r-phone"><span>${v.label}</span><b>${v.phone}</b></div>`
+        : v.type === 'curve'
+          ? renderCurve(v)
+        : v.type === 'tiers'
+          ? renderTiers(v)
         : v.type === 'metric'
           ? v.items.map((m, k) => `<div class="r-metric" style="--i:${k}"><span>${m.label}</span><p><s>${m.before}</s><b>${m.after}</b></p></div>`).join('')
           : v.images.map(m => img(m, root)).join('')

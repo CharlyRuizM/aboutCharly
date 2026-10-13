@@ -1,5 +1,11 @@
+// Curva de retención ilustrativa (sin cifras) y niveles de un programa
+export type CurveVisual = { type: 'curve'; caption: string; drops: { at: number; label: string }[]; threshold: { at: number; label: string }; bands?: { name: string; from: number; to: number }[] }
+export type TiersVisual = { type: 'tiers'; items: { name: string; range: string; reward: string; note: string }[] }
+
 // Gráficos de un caso. Todos son HTML/CSS, sin librerías.
 export type Visual =
+  | CurveVisual
+  | TiersVisual
   | { type: 'chips'; title: string; items: string[] } // red de marcas o distribuidores
   | { type: 'ids'; store: string; note: string; items: { dist: string; id: string }[] } // una tienda, muchos IDs
   | { type: 'phone'; ids: string[]; label: string; phone: string } // muchos IDs → un número
@@ -21,6 +27,8 @@ export type ReelScene = {
     | { type: 'converge'; ids: string[]; label: string; phone: string } // los IDs se vuelven un número
     | { type: 'screens'; images: ReelImage[] } // una o dos pantallas del producto
     | { type: 'metric'; items: { label: string; before: string; after: string }[] } // cifras antes → después
+    | CurveVisual
+    | TiersVisual
 }
 
 export type CaseSection = {
@@ -28,7 +36,7 @@ export type CaseSection = {
   label: string // etiqueta corta para el índice (Contexto, Problema…)
   heading: string // admite <em> para el énfasis en itálica
   body: string[] // párrafos; admiten <b> y <em>
-  options?: { name: string; verdict: 'Elegida' | 'Paso intermedio' | 'Descartada'; reason: string }[] // alternativas evaluadas
+  options?: { name: string; verdict: 'Elegida' | 'Paso intermedio' | 'Roadmap' | 'Descartada'; reason: string }[] // alternativas evaluadas
   visuals?: Visual[]
   list?: { title: string; items: string[] } // lista corta (p. ej. métricas)
   after?: string[] // párrafos al final de la sección

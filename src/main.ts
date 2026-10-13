@@ -14,6 +14,9 @@ import { activeLinks } from './scripts/active-tag'
 import { reveal } from './scripts/reveal'
 import { reel } from './scripts/reel'
 
+// Avisa al script del <head> que el JS cargó (si no, se quitan las animaciones y todo queda visible).
+document.documentElement.dataset.app = 'on'
+
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
 const typed = document.querySelector<HTMLElement>('[data-typed]')
 if (typed && !reducedMotion) typewriter(typed)
