@@ -11,7 +11,7 @@
 .cs-meta dd { margin: 0; font-size: 15px; }
 
 .cs-media { margin: 0 0 clamp(48px, 6vw, 88px); display: grid; gap: 10px; }
-.cs-media-box { aspect-ratio: 16 / 9; max-width: 100%; background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); }
+.cs-media-video { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; border: 1px solid var(--color-border); background: #f4f2ed; }
 .cs-media figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--color-muted); }
 
 .cs-body { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }

@@ -14,6 +14,7 @@ import { typewriter } from './scripts/typewriter'
 import { activeLinks } from './scripts/active-tag'
 import { reveal } from './scripts/reveal'
 import { reel } from './scripts/reel'
+import { videos } from './scripts/videos'
 
 // Avisa al script del <head> que el JS cargó (si no, se quitan las animaciones y todo queda visible).
 document.documentElement.dataset.app = 'on'
@@ -25,3 +26,4 @@ activeLinks('.tag', '.case')
 activeLinks('.cs-index a', '.cs-section')
 reveal()
 reel()
+videos()

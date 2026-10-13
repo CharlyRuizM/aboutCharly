@@ -38,7 +38,15 @@ export function renderCasePage(c: CaseStudy, draft = false) {
         <p class="cs-tagline">${s.tagline}</p>
         <dl class="cs-meta">${s.meta.map(m => `<div><dt>${m.label}</dt><dd>${m.value}</dd></div>`).join('')}</dl>
       </header>
-      ${s.media ? `<figure class="cs-media"><div class="cs-media-box" role="img" aria-label="${s.media.label} (pendiente)"></div><figcaption>${s.media.label}</figcaption></figure>` : ''}
+      ${s.media ? `
+      <figure class="cs-media">
+        <video class="cs-media-video" data-loop autoplay muted loop playsinline preload="metadata"
+          poster="${ROOT}${s.media.poster}" width="${s.media.width}" height="${s.media.height}" aria-label="${s.media.alt}">
+          <source src="${ROOT}${s.media.video}" type="video/mp4">
+          <source src="${ROOT}${s.media.video.replace(/\.mp4$/, '.webm')}" type="video/webm">
+        </video>
+        <figcaption>${s.media.label}</figcaption>
+      </figure>` : ''}
       <div class="cs-body">
         <nav class="cs-index" aria-label="Secciones del proyecto"><ol>${index}</ol></nav>
         <div class="cs-content">${sections}</div>

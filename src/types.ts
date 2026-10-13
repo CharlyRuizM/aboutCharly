@@ -49,7 +49,7 @@ export type CaseStory = {
   reel: ReelScene[] // resumen narrativo en la home, una escena por paso
   sections: CaseSection[]
   beforeAfter?: { before: string; after: string; line: string }
-  media?: { label: string } // espacio reservado para la animación del caso
+  media?: { label: string; alt: string; video: string; poster: string; width: number; height: number } // video en loop (rutas en public/)
 }
 
 export type CaseStudy = {

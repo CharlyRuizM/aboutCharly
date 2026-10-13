@@ -19,7 +19,14 @@ export const propagaMobile: CaseStory = {
     { label: 'Equipo', value: 'Producto + Tech' },
     { label: 'Fecha', value: 'Q3 2026' },
   ],
-  media: { label: 'Animación del caso · 40 s' },
+  media: {
+    label: 'Animación del proyecto · 40 s',
+    alt: 'Animación de 40 segundos: una tiendita compra a muchos distribuidores, cada uno le asigna un ID distinto, el tendero acumula más de 20 IDs y Propaga los reemplaza por su número celular como identidad única.',
+    video: 'cases/propaga-mobile/animacion.mp4',
+    poster: 'cases/propaga-mobile/animacion-poster.webp',
+    width: 1280,
+    height: 720,
+  },
   reel: [
     {
       label: 'Problema',
