@@ -4,6 +4,7 @@ export const profile = {
   role: 'Product Manager',
   location: 'Ciudad de México',
   cv: 'cv/CarlosRuiz-CV-ProductManager.pdf', // ruta en public/
+  cvGrowth: 'cv/CarlosRuiz-CV-ProductGrowth.pdf', // versión Growth, solo en /palenca/
   email: 'ingecarlosrm@gmail.com',
   phone: '+52 55 2562 9041', // solo se muestra en /palenca/
   linkedin: 'https://www.linkedin.com/in/carlosruizmejia', // si está vacío no se muestra

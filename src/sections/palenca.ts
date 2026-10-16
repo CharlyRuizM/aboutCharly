@@ -30,7 +30,7 @@ export function renderPalenca(root = '../') {
 
       <div class="pal-actions" id="contacto">
         <a class="case-more" href="${root}#trabajo">Ver mi book <span aria-hidden="true">→</span></a>
-        <a class="cv-link" href="${root}${profile.cv}" download>Descargar CV <span aria-hidden="true">↓</span></a>
+        <a class="cv-link" href="${root}${profile.cvGrowth}" download>Descargar CV <span aria-hidden="true">↓</span></a>
       </div>
 
       <ul class="pal-contact" aria-label="Contacto">

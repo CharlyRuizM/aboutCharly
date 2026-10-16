@@ -8,10 +8,11 @@ import { cases } from './data/cases'
 import { renderFooter } from './components/footer'
 import { renderExperience } from './sections/experience'
 import { renderPalenca } from './sections/palenca'
+import { profile } from './data/profile'
 
-const shell = (root: string, main: string, footer = true) => `
+const shell = (root: string, main: string, footer = true, cv?: string) => `
   <a class="skip-link" href="#main">Ir al contenido</a>
-  ${renderHeader(root)}
+  ${renderHeader(root, cv)}
   <main id="main">${main}</main>
   ${footer ? renderFooter(root) : ''}
 `
@@ -20,7 +21,7 @@ const shell = (root: string, main: string, footer = true) => `
 // draft: en dev se muestran las notas "Por completar"; en el build público no.
 export function renderPage(path = '/', { draft = false } = {}): string {
   // /palenca/ trae su propio bloque de contacto, así que va sin footer.
-  if (/^\/palenca\//.test(path)) return shell('../', renderPalenca('../'), false)
+  if (/^\/palenca\//.test(path)) return shell('../', renderPalenca('../'), false, profile.cvGrowth)
   const slug = path.match(/\/casos\/([^/]+)/)?.[1]
   const study = slug && cases.find(c => c.id === slug && c.story && c.status !== 'wip')
   if (slug && !study) throw new Error(`No hay caso con página para "${slug}"`)
