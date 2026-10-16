@@ -38,5 +38,5 @@ export default defineConfig(() => ({
   // Se sirve en la raíz del dominio (aboutcarlosruiz.com), en local y en producción.
   base: '/',
   plugins: [prerender()],
-  build: { rollupOptions: { input: { main: 'index.html', ...casePages } } },
+  build: { rollupOptions: { input: { main: 'index.html', palenca: 'palenca/index.html', ...casePages } } },
 }))

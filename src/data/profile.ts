@@ -5,6 +5,7 @@ export const profile = {
   location: 'Ciudad de México',
   cv: 'cv/CarlosRuiz-CV-ProductManager.pdf', // ruta en public/
   email: 'ingecarlosrm@gmail.com',
+  phone: '+52 55 2562 9041', // solo se muestra en /palenca/
   linkedin: 'https://www.linkedin.com/in/carlosruizmejia', // si está vacío no se muestra
   photo: 'carlos.webp', // ruta en public/; si está vacío no se muestra
   // Primera línea visible sin JS; el resto rota con la animación de escritura.

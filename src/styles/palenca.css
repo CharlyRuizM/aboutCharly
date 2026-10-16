@@ -1,0 +1,41 @@
+/* Página /palenca/: video arriba, "Gracias totales." grande y contacto. */
+.pal { display: grid; gap: clamp(24px, 3vw, 40px); padding-block: clamp(40px, 6vw, 80px) clamp(64px, 9vw, 128px); }
+.pal-meta { margin: 0; display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-muted); }
+.pal-meta::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+.pal-title { font-family: var(--font-display); font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -.025em; }
+.pal-title em { color: var(--color-accent-2); }
+
+/* Video 16:9 que se adapta al ancho; no se reproduce solo */
+.pal-video { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--color-border); background: repeating-linear-gradient(135deg, var(--color-placeholder) 0 10px, var(--color-placeholder-2) 10px 20px); overflow: hidden; }
+.pal-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Gracias totales: letras que entran en secuencia al ritmo del BPM y una barra que se llena */
+.pal-thanks { margin: clamp(24px, 5vw, 72px) 0 0; font-family: var(--font-display); font-size: clamp(60px, 13.5vw, 208px); line-height: .9; letter-spacing: -.04em; }
+.pal-thanks .w { display: inline-block; white-space: nowrap; }
+.pal-thanks .w-em { font-style: italic; color: var(--color-accent-2); padding-right: .04em; }
+.pal-thanks .ch { display: inline-block; }
+.pal-thanks .dot { color: var(--color-accent); font-style: normal; }
+.pal-thanks::after { content: ''; display: block; height: 4px; margin-top: .14em; background: var(--gradient-accent); transform-origin: left; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .pal-thanks.reveal { opacity: 1; transform: none; }
+  .js .pal-thanks .ch { opacity: 0; transform: translateY(.3em) rotate(4deg); filter: blur(10px);
+    transition: opacity .5s ease, transform .8s cubic-bezier(.2, .7, .2, 1), filter .6s ease;
+    transition-delay: calc(var(--i) * var(--beat) / 8); }
+  .js .pal-thanks.is-visible .ch { opacity: 1; transform: none; filter: none; }
+  .js .pal-thanks::after { transform: scaleX(0); transition: transform 1.4s cubic-bezier(.4, 0, .2, 1) calc(var(--beat) * 2); }
+  .js .pal-thanks.is-visible::after { transform: scaleX(1); }
+  .js .pal-thanks.is-visible .dot { animation: blink calc(var(--beat) * 2) steps(1) infinite calc(var(--beat) * 5); }
+}
+
+.pal-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; scroll-margin-top: 24px; }
+.pal-contact { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--color-text); }
+.pal-contact li { display: grid; gap: 8px; padding: 18px 20px 0 0; }
+.pal-contact span { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-muted); }
+.pal-contact a { justify-self: start; font-size: clamp(16px, 1.4vw, 19px); border-bottom: 1px solid var(--color-border); padding-bottom: 2px; overflow-wrap: anywhere; }
+.pal-contact a:hover { border-color: var(--color-text); }
+@media (max-width: 720px) {
+  .pal-contact { grid-template-columns: minmax(0, 1fr); }
+  .pal-contact li { padding: 16px 0; border-bottom: 1px solid var(--color-border); }
+}
+.pal-actions .cv-link { padding: 14px 22px; font-size: 13px; }
