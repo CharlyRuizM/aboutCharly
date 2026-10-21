@@ -12,9 +12,10 @@ export type Visual =
   | { type: 'identity'; store: string; phone: string; dists: string[]; ids: string[] } // antes / después
   | { type: 'steps'; steps: string[] } // flujo en pasos
   | { type: 'shot'; src: string; width: number; height: number; alt: string; caption: string } // captura (ruta en public/)
-  | { type: 'gallery'; caption: string; wide?: boolean; images: { src: string; width: number; height: number; alt: string; caption: string }[] } // varias capturas
+  | { type: 'gallery'; caption: string; wide?: boolean; phones?: boolean; images: { src: string; width: number; height: number; alt: string; caption: string }[] } // varias capturas
   | { type: 'metrics'; items: { label: string; before: string; after: string }[] } // cifras antes → después
   | { type: 'compare'; columns: [string, string]; rows: { label: string; before: string; after: string }[] } // tabla antes / después
+  | DsVisual
 
 export type ReelImage = { src: string; width: number; height: number; alt: string; kind: 'phone' | 'desktop' | 'screen' } // screen: captura sin marco
 
@@ -59,3 +60,15 @@ export type CaseStudy = {
   story?: CaseStory // si existe, el caso tiene página propia en /casos/<id>/
   status?: 'wip' // en progreso: se muestra en la lista solo con título y una línea
 }
+
+// Visuales del caso de design system (piezas tipo LEGO, componente en vivo, tokens)
+export type ShotImage = { src: string; width: number; height: number; alt: string; caption: string }
+export type DsVisual =
+  | { type: 'swipe'; caption: string; labels: [string, string]; items: { label: string; before: string; after: string; width: number; height: number; alt: string }[] } // deslizador antes / después
+  | { type: 'ds-assemble'; caption: string } // la tarjeta se arma pieza por pieza al hacer scroll
+  | { type: 'ds-playground'; caption: string } // componente en vivo con panel de properties
+  | { type: 'ds-tokens'; caption: string; modes: { id: string; label: string }[]; tokens: { name: string; values: Record<string, string>; note?: string }[] } // modos de tokens en vivo
+  | { type: 'palette'; caption: string; groups: { name: string; colors: { name: string; value: string }[] }[] }
+  | { type: 'typescale'; caption: string; rows: { name: string; family: string; desk: string; mobile: string; size: number; weight?: number }[] }
+  | { type: 'strip'; caption: string; images: ShotImage[] } // fila con scroll horizontal
+  | { type: 'code'; caption: string; code: string }

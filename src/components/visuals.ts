@@ -1,5 +1,6 @@
 import type { Visual } from '../types'
 import { renderCurve, renderTiers } from './curve'
+import { renderDsVisual } from './ds-visuals'
 
 // root: ruta relativa a la raíz del sitio, para las imágenes de public/.
 export function renderVisual(v: Visual, root = './'): string {
@@ -47,7 +48,7 @@ export function renderVisual(v: Visual, root = './'): string {
         <ol class="v v-steps reveal">${v.steps.map((s, i) => `<li style="--i:${i}"><span>${String(i + 1).padStart(2, '0')}</span>${s}</li>`).join('')}</ol>`
     case 'gallery':
       return `
-        <figure class="v v-gallery${v.wide ? ' is-wide' : ''} reveal">
+        <figure class="v v-gallery${v.wide ? ' is-wide' : ''}${v.phones ? ' is-phones' : ''} reveal">
           <ul>${v.images.map((m, i) => `
             <li style="--i:${i}">
               <img src="${root}${m.src}" width="${m.width}" height="${m.height}" alt="${m.alt}" loading="lazy" decoding="async">
@@ -72,6 +73,8 @@ export function renderVisual(v: Visual, root = './'): string {
       return `<div class="v reveal">${renderTiers(v)}</div>`
     case 'shot':
       return renderShot(v, root)
+    default:
+      return renderDsVisual(v, root)
   }
 }
 

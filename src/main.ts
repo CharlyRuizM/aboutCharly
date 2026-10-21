@@ -11,11 +11,13 @@ import './styles/visuals.css'
 import './styles/reel.css'
 import './styles/experience.css'
 import './styles/palenca.css'
+import './styles/ds.css'
 import { typewriter } from './scripts/typewriter'
 import { activeLinks } from './scripts/active-tag'
 import { reveal } from './scripts/reveal'
 import { reel } from './scripts/reel'
 import { videos } from './scripts/videos'
+import { ds } from './scripts/ds'
 
 // Avisa al script del <head> que el JS cargó (si no, se quitan las animaciones y todo queda visible).
 document.documentElement.dataset.app = 'on'
@@ -28,3 +30,4 @@ activeLinks('.cs-index a', '.cs-section')
 reveal()
 reel()
 videos()
+ds()
