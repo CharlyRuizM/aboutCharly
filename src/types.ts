@@ -73,3 +73,4 @@ export type DsVisual =
   | { type: 'typescale'; caption: string; rows: { name: string; family: string; desk: string; mobile: string; size: number; weight?: number }[] }
   | { type: 'strip'; caption: string; images: ShotImage[] } // fila con scroll horizontal
   | { type: 'code'; caption: string; code: string }
+  | { type: 'library'; caption: string; items: (ShotImage & { name: string; wide?: boolean })[] } // mosaico de componentes de la librería

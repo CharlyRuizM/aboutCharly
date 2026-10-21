@@ -78,11 +78,20 @@ export const banamexDs: CaseStory = {
       heading: 'Cada pieza, <em>un componente con reglas.</em>',
       body: [
         'Diseñé pensando también en cómo se iba a construir. Con <b>Auto Layout</b> definí cómo crece cada pieza sin deformar su silueta, y con <b>variantes</b> y <b>component properties</b> cubrí estados, tamaños y contenido en un solo componente. La esquina cóncava se volvió su propia pieza de 16 px, reutilizable en todo el sistema.',
+        'Y no solo la tarjeta: lo mismo para el resto de la librería, de inputs y selects a steps e iconografía, cada uno con sus estados.',
       ],
       visuals: [
         { type: 'ds-playground', caption: 'Pruébalo: réplica en HTML/CSS del componente, con datos ficticios' },
         { type: 'shot', src: `${P}figma-properties.webp`, width: 1176, height: 752, alt: 'El componente Card Concert en Figma con su panel de properties: Status, Size, Venue, Artist, fecha y tres booleanos.', caption: 'El componente en Figma · 9 properties' },
         { type: 'strip', caption: 'Component set · activo, hover y pasado', images: VARIANTS },
+        { type: 'library', caption: 'La librería · componentes con sus estados', items: [
+          { ...img('lib-base-input', 1200, 1184, 'Componente Base Input con sus estados: default, focus, error, disabled y llenado.', 'Default, focus, error, disabled y llenado'), name: 'Input' },
+          { ...img('lib-select', 1190, 1276, 'Componente Select con sus estados y la lista de opciones desplegada.', 'Estados y lista de opciones'), name: 'Select' },
+          { ...img('lib-check-radio', 626, 410, 'Checkbox y radio button con label, en sus estados.', 'Con label, en todos sus estados'), name: 'Check & Radio' },
+          { ...img('lib-checkbox', 356, 344, 'Checkbox vacío, marcado e indeterminado, en tres estados.', 'Vacío, marcado e indeterminado'), name: 'Checkbox' },
+          { ...img('lib-steps', 1000, 501, 'Componente Steps para el progreso del canje, en versión de 3 y de 2 pasos.', 'Progreso del canje en 2 o 3 pasos'), name: 'Steps', wide: true },
+          { ...img('lib-icons', 1000, 702, 'Parte de la iconografía del sistema, en versión relleno y línea.', 'Más de 500 íconos, en relleno y línea'), name: 'Iconografía', wide: true },
+        ] },
       ],
     },
     {
@@ -129,7 +138,7 @@ export const banamexDs: CaseStory = {
       heading: 'Diseñado para <em>construirse.</em>',
       body: [
         'En HTML todo es una caja rectangular que se apila en el flujo del documento. La marca no: tiene pestañas y recortes. Por eso la tarjeta se construye con <b>dos bloques en el flujo</b> y piezas encima con <b>position: absolute</b> que "muerden" la caja, y la esquina cóncava es una pieza de 16 px que en CSS es un degradado radial.',
-        'Como UX Engineer, cada regla de Figma tenía su traducción: <b>Fill</b> y <b>Hug</b> en cada bloque, radios y espaciados con valor exacto. Así, desarrollo no tenía que adivinar, y el mismo componente funcionaba en desktop y en mobile.',
+        'Para el handoff pasábamos a desarrollo los <b>tokens</b> y los <b>assets</b> de cada pieza, y en Figma marcábamos qué componentes estaban <b>listos para desarrollar</b>. Con eso se construyó el design system en código y se fueron maquetando los elementos que faltaban. Así, el mismo sistema se usó en <b>Conciertos Privados</b>, <b>Travel</b> y <b>Canje de premios</b>.',
       ],
       visuals: [
         { type: 'ds-inspect', caption: 'Pruébalo: ve las cajas, quita el position: absolute o cambia el ancho. Pasa el cursor por el DOM para ver cada pieza.', pieces: [
@@ -141,6 +150,7 @@ export const banamexDs: CaseStory = {
           { target: '.dsc-cut', tag: '<span class="cut">', note: 'absolute · right 0 · bottom 0' },
           { target: '.dsc-f-cl, .dsc-f-ct', tag: '<span class="corner"> ×2', note: 'absolute · esquinas del recorte' },
         ] },
+        { type: 'steps', steps: ['Tokens y assets a desarrollo', 'Componentes marcados como <em>listos para desarrollar</em> en Figma', 'Design system en código y maquetado de lo que faltaba'] },
         { type: 'shot', src: `${P}figma-autolayout.webp`, width: 1510, height: 350, alt: 'Auto Layout del bloque de precio y el botón en Figma: 161 Fill × 23 Hug.', caption: 'Fill × Hug en el recorte del botón' },
         { type: 'shot', src: `${P}figma-esquina.webp`, width: 1308, height: 374, alt: 'La esquina cóncava de 16 × 16 que une la etiqueta con la imagen, en Figma.', caption: 'La esquina de 16 × 16 como pieza propia' },
         { type: 'code', caption: 'La misma esquina, en CSS', code: `/* Esquina cóncava: la pieza de 16 × 16 de Figma */
@@ -153,6 +163,7 @@ export const banamexDs: CaseStory = {
     var(--color-surface-page) var(--radius-notch)
   );
 }` },
+        { type: 'shot', src: `${P}lib-concert-details.webp`, width: 1400, height: 2012, alt: 'Detalle de un concierto armado con componentes de la librería: selects, alerta de error, slider de puntos, chip y tarjetas de otras fechas.', caption: 'Una pantalla armada con piezas de la librería: select, alerta, slider, chip y tarjetas' },
         { type: 'gallery', caption: 'Mobile · mismas piezas, otra escala', phones: true, images: [
           img('movil-acceso', 360, 1496, 'Conciertos Privados en móvil: acceso y cartelera.', 'Acceso'),
           img('movil-resumen', 360, 1898, 'Conciertos Privados en móvil: resumen de boletos y envío.', 'Resumen'),

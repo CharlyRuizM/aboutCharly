@@ -100,6 +100,16 @@ export function renderDsVisual(v: DsVisual, root = './'): string {
             <li style="--i:${i}"><img src="${root}${m.src}" width="${m.width}" height="${m.height}" alt="${m.alt}" decoding="async">${m.caption ? `<span>${m.caption}</span>` : ''}</li>`).join('')}</ul>
           <figcaption>${v.caption}</figcaption>
         </figure>`
+    case 'library':
+      return `
+        <figure class="v v-library reveal">
+          <ul>${v.items.map((m, i) => `
+            <li class="${m.wide ? 'is-wide' : ''}" style="--i:${i}">
+              <div class="lib-img"><img src="${root}${m.src}" width="${m.width}" height="${m.height}" alt="${m.alt}" loading="lazy" decoding="async"></div>
+              <p><b>${m.name}</b><span>${m.caption}</span></p>
+            </li>`).join('')}</ul>
+          <figcaption>${v.caption}</figcaption>
+        </figure>`
     case 'code':
       return `
         <figure class="v v-code reveal">
