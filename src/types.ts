@@ -67,6 +67,7 @@ export type DsVisual =
   | { type: 'swipe'; caption: string; labels: [string, string]; items: { label: string; before: string; after: string; width: number; height: number; alt: string }[] } // deslizador antes / después
   | { type: 'ds-assemble'; caption: string } // la tarjeta se arma pieza por pieza al hacer scroll
   | { type: 'ds-playground'; caption: string } // componente en vivo con panel de properties
+  | { type: 'ds-inspect'; caption: string; pieces: { target: string; tag: string; note: string }[] } // modelo de caja: cajas, position absolute y ancho
   | { type: 'ds-tokens'; caption: string; modes: { id: string; label: string }[]; tokens: { name: string; values: Record<string, string>; note?: string }[] } // modos de tokens en vivo
   | { type: 'palette'; caption: string; groups: { name: string; colors: { name: string; value: string }[] }[] }
   | { type: 'typescale'; caption: string; rows: { name: string; family: string; desk: string; mobile: string; size: number; weight?: number }[] }

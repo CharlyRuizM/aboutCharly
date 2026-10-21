@@ -24,6 +24,7 @@ export const banamexDs: CaseStory = {
     { label: 'Cliente', value: 'Banamex' },
     { label: 'Producto', value: 'Design system para programas de lealtad' },
     { label: 'Herramientas', value: 'Figma · Auto Layout · Variables' },
+    { label: 'Año', value: '2025' },
   ],
   reel: [
     {
@@ -39,11 +40,7 @@ export const banamexDs: CaseStory = {
     {
       label: 'Sistema',
       text: 'Cada pieza se volvió un componente con reglas, variantes y properties.',
-      visual: { type: 'metric', items: [
-        { label: 'Properties en un componente', before: '', after: '9' },
-        { label: 'Colores de marca en Variables', before: '', after: '29' },
-        { label: 'Estilos tipográficos', before: '', after: '26' },
-      ] },
+      visual: { type: 'screens', images: [reelImg(VARIANTS[1], 'screen'), reelImg(VARIANTS[4], 'screen')] },
     },
   ],
   sections: [
@@ -52,7 +49,7 @@ export const banamexDs: CaseStory = {
       label: 'Contexto',
       heading: 'Una marca nueva <em>en programas que ya existían.</em>',
       body: [
-        'Banamex estrenó marca y había que llevarla a los programas digitales de lealtad que operábamos en Fidelity Marketing, empezando por <b>Conciertos Privados</b>. Cada pantalla estaba hecha con la marca anterior, así que migrar una por una no iba a escalar: necesitábamos un <b>design system</b>.',
+        'Banamex estrenó marca y había que llevarla a los programas digitales de lealtad que operábamos en Fidelity Marketing, empezando por <b>Conciertos Privados</b> y siguiendo con <b>Travel</b> y <b>Canje de premios</b>. Cada pantalla estaba hecha con la marca anterior, así que migrar una por una no iba a escalar: necesitábamos un <b>design system</b>.',
       ],
       visuals: [{
         type: 'swipe',
@@ -65,12 +62,11 @@ export const banamexDs: CaseStory = {
           { label: 'Canje', before: `${P}ba-canje-antes.webp`, after: `${P}ba-canje-despues.webp`, width: 1280, height: 1083, alt: 'Confirmación de canje. El folio y el código aparecen difuminados.' },
         ],
       }],
-      pending: ['¿En qué otros programas se aplicó el sistema además de Conciertos Privados?', 'Confirmar el año (2024, 2025 o ambos).'],
     },
     {
       id: 'reto',
       label: 'El reto',
-      heading: 'Piezas que encajan, <em>no cajas con padding.</em>',
+      heading: 'A estos bloques <em>los bautizamos legos.</em>',
       body: [
         'Lo común es crear un design system desde cero sobre una retícula. Aquí era al revés: la marca venía hecha de bloques con pestañas y recortes que encajan como LEGO. Si los forzaba al modelo de caja, la marca se perdía; si los dejaba como ilustración, no se podían reutilizar ni construir en código.',
       ],
@@ -88,15 +84,14 @@ export const banamexDs: CaseStory = {
         { type: 'shot', src: `${P}figma-properties.webp`, width: 1176, height: 752, alt: 'El componente Card Concert en Figma con su panel de properties: Status, Size, Venue, Artist, fecha y tres booleanos.', caption: 'El componente en Figma · 9 properties' },
         { type: 'strip', caption: 'Component set · activo, hover y pasado', images: VARIANTS },
       ],
-      pending: ['Confirmar el nombre de cada variante del component set (activo, hover, pasado, tamaños).'],
     },
     {
       id: 'tokens',
       label: 'Tokens',
       heading: 'De colores sueltos <em>a decisiones con nombre.</em>',
       body: [
-        'El sistema arrancó con la paleta de la marca como <b>Variables</b> de color, en cuatro grupos, y una escala tipográfica responsive para desktop y mobile.',
-        'El siguiente paso que propuse fue una capa semántica con alias y modos: que un componente no use "rojo", sino <b>action/primary</b>. Así, cambiar de programa o de marca es cambiar de modo, no rediseñar. Por eso la misma estructura servía para <b>Santander</b>, cuyo design system también hice.',
+        'El nuevo brand book traía una paleta enorme: primarios, secundarios, terciarios y superficies. ¿Muchos colores? <em>Love it.</em> ¿Usarlos todos en una pantalla de canje? Mejor no.',
+        'El reto fue elegir los principales y darles jerarquía: cuál es la acción, cuál la superficie, cuál avisa que quedan pocos boletos y cuál marca un evento que ya pasó. Cada color quedó con un uso y un estado claros, como <b>Variables</b> en cuatro grupos, junto con una escala tipográfica responsive para desktop y mobile.',
       ],
       visuals: [
         { type: 'palette', caption: 'Variables de color del archivo original', groups: [
@@ -126,14 +121,6 @@ export const banamexDs: CaseStory = {
           { name: 'Body 3', family: 'Banamex Text', desk: '14 / 20', mobile: '14 / 20', size: 14 },
           { name: 'Caption 1', family: 'Banamex Micro', desk: '10 / 14', mobile: '10 / 12', size: 11 },
         ] },
-        { type: 'ds-tokens', caption: 'Propuesta · el mismo componente, otro modo. Los valores de Santander son ilustrativos.', modes: [{ id: 'banamex', label: 'Banamex' }, { id: 'santander', label: 'Santander' }], tokens: [
-          { name: 'color/surface/card', values: { banamex: '#001e22', santander: '#ec0000' }, note: '→ primitivo' },
-          { name: 'color/surface/card-hover', values: { banamex: '#005162', santander: '#cc0000' } },
-          { name: 'color/action/primary', values: { banamex: '#ff1b44', santander: '#222222' } },
-          { name: 'color/feedback/chip', values: { banamex: '#ffd6ba', santander: '#f2f2f2' } },
-          { name: 'radius/block', values: { banamex: '24 px', santander: '8 px' } },
-          { name: 'radius/notch', values: { banamex: '16 px', santander: '8 px' } },
-        ] },
       ],
     },
     {
@@ -141,9 +128,19 @@ export const banamexDs: CaseStory = {
       label: 'Handoff',
       heading: 'Diseñado para <em>construirse.</em>',
       body: [
-        'Como UX Engineer, cada decisión en Figma tenía que poder traducirse a código: reglas de <b>Fill</b> y <b>Hug</b> en cada bloque, radios y espaciados con valor exacto, y la esquina cóncava resuelta como una pieza que en CSS es un degradado radial. Así, desarrollo no tenía que adivinar, y el mismo componente funcionaba en desktop y en mobile.',
+        'En HTML todo es una caja rectangular que se apila en el flujo del documento. La marca no: tiene pestañas y recortes. Por eso la tarjeta se construye con <b>dos bloques en el flujo</b> y piezas encima con <b>position: absolute</b> que "muerden" la caja, y la esquina cóncava es una pieza de 16 px que en CSS es un degradado radial.',
+        'Como UX Engineer, cada regla de Figma tenía su traducción: <b>Fill</b> y <b>Hug</b> en cada bloque, radios y espaciados con valor exacto. Así, desarrollo no tenía que adivinar, y el mismo componente funcionaba en desktop y en mobile.',
       ],
       visuals: [
+        { type: 'ds-inspect', caption: 'Pruébalo: ve las cajas, quita el position: absolute o cambia el ancho. Pasa el cursor por el DOM para ver cada pieza.', pieces: [
+          { target: '.dsc', tag: '<div class="card">', note: 'display: grid · contenedor' },
+          { target: '.dsc-media', tag: '<div class="media">', note: 'flujo · fila 1 del grid' },
+          { target: '.dsc-body', tag: '<div class="body">', note: 'flujo · fila 2 del grid' },
+          { target: '.dsc-tab', tag: '<span class="tab">', note: 'absolute · top 0 · left 0 · Hug' },
+          { target: '.dsc-f-tr, .dsc-f-tb', tag: '<span class="corner"> ×2', note: 'absolute · esquinas de 16 px' },
+          { target: '.dsc-cut', tag: '<span class="cut">', note: 'absolute · right 0 · bottom 0' },
+          { target: '.dsc-f-cl, .dsc-f-ct', tag: '<span class="corner"> ×2', note: 'absolute · esquinas del recorte' },
+        ] },
         { type: 'shot', src: `${P}figma-autolayout.webp`, width: 1510, height: 350, alt: 'Auto Layout del bloque de precio y el botón en Figma: 161 Fill × 23 Hug.', caption: 'Fill × Hug en el recorte del botón' },
         { type: 'shot', src: `${P}figma-esquina.webp`, width: 1308, height: 374, alt: 'La esquina cóncava de 16 × 16 que une la etiqueta con la imagen, en Figma.', caption: 'La esquina de 16 × 16 como pieza propia' },
         { type: 'code', caption: 'La misma esquina, en CSS', code: `/* Esquina cóncava: la pieza de 16 × 16 de Figma */
@@ -162,20 +159,7 @@ export const banamexDs: CaseStory = {
           img('movil-detalle', 360, 3715, 'Conciertos Privados en móvil: detalle del concierto con mapa de zonas.', 'Detalle'),
         ] },
       ],
-      pending: ['¿Cómo fue la entrega a desarrollo? (Dev Mode, sesiones, documentación por componente)', '¿Quién adoptó el sistema: qué equipos o programas?'],
-    },
-    {
-      id: 'resultado',
-      label: 'Resultado',
-      heading: 'Una marca <em>que se arma con piezas.</em>',
-      body: ['La migración dejó de ser rediseñar pantallas una por una y pasó a ser armar con piezas que ya existían.'],
-      visuals: [{ type: 'metrics', items: [
-        { label: 'Properties en un solo componente', before: '', after: '9' },
-        { label: 'Colores de marca en Variables', before: '', after: '29' },
-        { label: 'Estilos tipográficos (desktop y mobile)', before: '', after: '26' },
-      ] }],
       after: ['<small>Trabajo realizado en Fidelity Marketing para Banamex. Las marcas pertenecen a sus dueños. Los datos de las demos son ficticios y la información sensible de las capturas está difuminada.</small>'],
-      pending: ['Agregar datos de impacto: tiempo por pantalla antes y después, programas migrados o componentes en la librería.'],
     },
   ],
 }

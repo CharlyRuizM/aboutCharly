@@ -25,8 +25,7 @@ export function renderDsCard(p: DsCardProps = {}, opts: { assemble?: boolean } =
         <span class="dsc-venue" data-prop="venue">${venue}</span>
         <span class="dsc-artist" data-prop="artist">${artist}</span>
         <span class="dsc-price"><small>Desde</small>20,000 Puntos</span>`)}
-      ${piece('dsc-tab', -22, -22, '<span class="dsc-chip"><span class="is-few">Quedan pocos boletos</span><span class="is-out">Agotado</span></span>')}
-      ${piece('dsc-f dsc-f-tr', 14, -30)}
+      ${piece('dsc-tab', -22, -22, '<span class="dsc-chip"><span class="is-few">Quedan pocos boletos</span><span class="is-out">Agotado</span></span><span class="dsc-f dsc-f-tr"></span>')}
       ${piece('dsc-f dsc-f-tb', -30, 14)}
       ${piece('dsc-cut', 24, 24, '<span class="dsc-cta">Buscar boletos</span>')}
       ${piece('dsc-f dsc-f-cl', -14, 34)}

@@ -47,6 +47,25 @@ export function renderDsVisual(v: DsVisual, root = './'): string {
           </div>
           <figcaption>${v.caption}</figcaption>
         </figure>`
+    case 'ds-inspect':
+      return `
+        <figure class="v v-ds-inspect reveal" data-inspect>
+          <div class="ins-bar">
+            <button type="button" class="ds-btn" data-ins="boxes" aria-pressed="false">Ver cajas</button>
+            <button type="button" class="ds-btn" data-ins="flow" aria-pressed="false">Quitar position: absolute</button>
+            <label class="ins-width">Ancho <input type="range" min="240" max="440" value="340" data-ins="width"><output>340 px</output></label>
+          </div>
+          <div class="ins-grid">
+            <div class="ds-stage ins-stage">${renderDsCard()}<span class="ins-tip" aria-live="polite"></span></div>
+            <div class="ins-side">
+              <p class="ins-legend"><span class="is-flow">Flujo normal</span><span class="is-abs">position: absolute</span></p>
+              <ol class="ins-tree" aria-label="Estructura del componente en el DOM">${v.pieces.map(x => `
+                <li><button type="button" data-target="${x.target}"><code>${esc(x.tag)}</code><small>${x.note}</small></button></li>`).join('')}
+              </ol>
+            </div>
+          </div>
+          <figcaption>${v.caption}</figcaption>
+        </figure>`
     case 'ds-tokens':
       return `
         <figure class="v v-ds-tokens reveal" data-tokens data-mode="${v.modes[0].id}">
