@@ -1,0 +1,61 @@
+/* Casos con marca de cliente (data-theme) y conversación de WhatsApp simulada */
+
+/* ---------- Tema Italika: navy, azul y dorado ---------- */
+.cs[data-theme="italika"] {
+  --ita-navy-900: #000b2e; --ita-navy-700: #001959; --ita-navy-500: #1b3a8c;
+  --ita-blue: #3d6bff; --ita-blue-300: #7fa2ff; --ita-gold: #e8b84a; --ita-gold-300: #f6d886;
+  --color-accent: var(--ita-blue-300);
+  --color-on-accent: #000b2e;
+  --gradient-accent: linear-gradient(90deg, var(--ita-navy-500), var(--ita-blue) 60%, var(--ita-gold));
+}
+@media (prefers-color-scheme: light) {
+  .cs[data-theme="italika"] { --color-accent: var(--ita-navy-500); --color-on-accent: #fff; }
+}
+.cs[data-theme="italika"] .cs-head {
+  position: relative; overflow: hidden; margin-top: clamp(16px, 2.4vw, 32px); padding: clamp(28px, 5vw, 64px);
+  margin-bottom: clamp(40px, 5vw, 72px); border-radius: 22px; color: #fff;
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgb(61 107 255 / .45), transparent 60%),
+    radial-gradient(80% 70% at 0% 100%, rgb(232 184 74 / .16), transparent 60%),
+    linear-gradient(160deg, var(--ita-navy-700), var(--ita-navy-900));
+}
+.cs[data-theme="italika"] .cs-head::after { content: ''; position: absolute; right: clamp(-60px, -4vw, -20px); bottom: -40px; width: clamp(180px, 26vw, 320px); aspect-ratio: 85 / 100; background: url('/cases/italika/italika-white.webp') center / contain no-repeat; opacity: .07; pointer-events: none; }
+.cs[data-theme="italika"] .cs-head > * { position: relative; z-index: 1; }
+.cs[data-theme="italika"] .cs-back { color: rgb(255 255 255 / .7); }
+.cs[data-theme="italika"] .cs-back:hover { color: #fff; }
+.cs[data-theme="italika"] .cs-tagline { color: rgb(255 255 255 / .72); }
+.cs[data-theme="italika"] .cs-tagline em { color: var(--ita-gold-300); }
+.cs[data-theme="italika"] .cs-meta div { border-top-color: rgb(255 255 255 / .2); }
+.cs[data-theme="italika"] .cs-meta dt { color: rgb(255 255 255 / .6); }
+.cs-brand { margin: 0; display: flex; align-items: center; gap: 12px; font: 600 12px/1 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; }
+.cs-brand img { width: 34px; height: auto; }
+.cs-brand span { padding-left: 12px; border-left: 1px solid rgb(255 255 255 / .3); color: var(--ita-gold-300, inherit); }
+
+/* ---------- Conversación de WhatsApp ---------- */
+.v-chat { display: grid; gap: 12px; justify-items: center; min-width: 0; }
+.chat { width: min(100%, 380px); border-radius: 26px; overflow: hidden; border: 1px solid var(--color-border); background: #efe7dc; color: #111b21; font: 14px/1.4 var(--font-sans); box-shadow: 0 18px 50px rgb(0 0 0 / .25); }
+.chat-head { margin: 0; display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #00113f; color: #fff; }
+.chat-head img { width: 26px; height: auto; }
+.chat-head span { display: grid; gap: 2px; }
+.chat-head small { font-size: 11px; color: rgb(255 255 255 / .65); }
+.chat-log { list-style: none; margin: 0; padding: 14px 12px 18px; display: grid; gap: 8px; min-height: 420px; align-content: start;
+  background: radial-gradient(circle, rgb(0 0 0 / .05) 1px, transparent 1.5px) 0 0 / 14px 14px, #efe7dc; }
+.msg { max-width: 82%; padding: 8px 10px; border-radius: 10px; box-shadow: 0 1px 1px rgb(0 0 0 / .08); }
+.msg p { margin: 0; }
+.msg.is-in { justify-self: start; background: #fff; border-top-left-radius: 2px; }
+.msg.is-out { justify-self: end; background: #d9fdd3; border-top-right-radius: 2px; }
+.ticket { display: grid; gap: 3px; width: 190px; margin-bottom: 6px; padding: 12px 12px 14px; background: #fff; color: #222; font: 10.5px/1.35 var(--font-mono); border-radius: 4px; border-bottom: 2px dashed #c9c9c9; box-shadow: 0 1px 3px rgb(0 0 0 / .2); transform: rotate(-1.5deg); }
+.ticket b { font-size: 11px; margin-bottom: 4px; letter-spacing: .04em; color: #000; }
+.chat-link { display: grid; gap: 3px; padding: 10px 12px; border-radius: 8px; border-left: 4px solid #e8b84a; background: linear-gradient(160deg, #001959, #000b2e); color: #fff; }
+.chat-link b { font-size: 13px; }
+.chat-link span { font-size: 12px; color: rgb(255 255 255 / .75); }
+
+/* Los mensajes llegan uno por uno al entrar en pantalla */
+@media (prefers-reduced-motion: no-preference) {
+  .js .v-chat.reveal { opacity: 1; transform: none; }
+  .js .v-chat .msg { opacity: 0; translate: 0 10px; scale: .96; transition: opacity .35s ease, translate .45s cubic-bezier(.2, .8, .2, 1), scale .45s cubic-bezier(.2, .8, .2, 1); transition-delay: calc(var(--i) * 900ms + 300ms); }
+  .js .v-chat.is-visible .msg { opacity: 1; translate: 0 0; scale: 1; }
+}
+/* El chat conserva sus propios colores aunque la sección pinte los <b> */
+.v-chat .chat-head b, .v-chat .chat-link b { color: #fff; font-weight: 600; }
+.v-chat .ticket b { color: #111; }

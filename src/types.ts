@@ -51,6 +51,7 @@ export type CaseStory = {
   sections: CaseSection[]
   beforeAfter?: { before: string; after: string; line: string }
   media?: { label: string; alt: string; video: string; poster: string; width: number; height: number } // video en loop (rutas en public/)
+  brand?: { name: string; logo: string; theme: string } // marca del cliente: logo (blanco) y tema de color del caso
 }
 
 export type CaseStudy = {
@@ -73,4 +74,10 @@ export type DsVisual =
   | { type: 'typescale'; caption: string; rows: { name: string; family: string; desk: string; mobile: string; size: number; weight?: number }[] }
   | { type: 'strip'; caption: string; images: ShotImage[] } // fila con scroll horizontal
   | { type: 'code'; caption: string; code: string }
+  | { type: 'chat'; caption: string; business: string; logo?: string; messages: ChatMessage[] } // conversación de WhatsApp simulada
   | { type: 'library'; caption: string; items: (ShotImage & { name: string; wide?: boolean })[] } // mosaico de componentes de la librería
+
+export type ChatMessage =
+  | { from: 'customer' | 'business'; text: string }
+  | { from: 'customer'; ticket: { title: string; lines: string[] }; text?: string }
+  | { from: 'business'; link: { title: string; text: string } }

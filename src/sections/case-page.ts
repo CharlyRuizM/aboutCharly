@@ -31,9 +31,10 @@ export function renderCasePage(c: CaseStudy, draft = false) {
   const next = cases.slice(i + 1).concat(cases.slice(0, i)).find(x => x.story && x.status !== 'wip')
 
   return `
-    <article class="cs" aria-labelledby="cs-title">
+    <article class="cs"${s.brand ? ` data-theme="${s.brand.theme}"` : ''} aria-labelledby="cs-title">
       <header class="cs-head">
         <a class="cs-back" href="${ROOT}#trabajo">← Trabajo</a>
+        ${s.brand ? `<p class="cs-brand"><img src="${ROOT}${s.brand.logo}" width="85" height="100" alt=""><span>${s.brand.name}</span></p>` : ''}
         <h1 id="cs-title">${c.title}</h1>
         <p class="cs-tagline">${s.tagline}</p>
         <dl class="cs-meta">${s.meta.map(m => `<div><dt>${m.label}</dt><dd>${m.value}</dd></div>`).join('')}</dl>

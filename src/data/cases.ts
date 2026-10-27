@@ -1,11 +1,13 @@
 import type { CaseStudy } from '../types'
 import { propagaMobile } from './stories/propaga-mobile'
+import { italika } from './stories/italika'
 import { prolana } from './stories/prolana'
 import { propesos } from './stories/propesos'
 import { banamex } from './stories/banamex'
 import { banamexDs } from './stories/banamex-ds'
 
 export const cases: CaseStudy[] = [
+  { id: 'italika-lealtad', title: 'Italika · Lealtad por WhatsApp', summary: 'Un back office y un programa de lealtad que viven en WhatsApp para talleres autorizados Italika: del reporte semanal al sello automático.', story: italika },
   { id: 'propaga-mobile', title: 'Propaga Mobile', summary: 'Un tendero manejaba más de 20 IDs, uno por distribuidor. Su celular pasó a ser su identidad única.', story: propagaMobile },
   { id: 'prolana', title: 'ProLana', summary: 'De un MVP operado por WhatsApp a una solicitud self-service: de 7 a 1.5 minutos.', story: prolana },
   { id: 'propesos', title: 'Propesos · Loyalty program', summary: 'Un programa de lealtad de tres niveles para que el tendero llegara a la 4ª compra, medido contra un grupo de control.', story: propesos },

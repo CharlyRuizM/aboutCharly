@@ -1,4 +1,4 @@
-import type { DsVisual } from '../types'
+import type { ChatMessage, DsVisual } from '../types'
 import { renderDsCard } from './ds-card'
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -100,6 +100,22 @@ export function renderDsVisual(v: DsVisual, root = './'): string {
             <li style="--i:${i}"><img src="${root}${m.src}" width="${m.width}" height="${m.height}" alt="${m.alt}" decoding="async">${m.caption ? `<span>${m.caption}</span>` : ''}</li>`).join('')}</ul>
           <figcaption>${v.caption}</figcaption>
         </figure>`
+    case 'chat': {
+      const msg = (m: ChatMessage, i: number) => {
+        const cls = `msg ${m.from === 'customer' ? 'is-out' : 'is-in'}`
+        if ('ticket' in m) return `<li class="${cls} has-ticket" style="--i:${i}"><div class="ticket" role="img" aria-label="Foto de un ticket de servicio con datos ficticios"><b>${m.ticket.title}</b>${m.ticket.lines.map(l => `<span>${l}</span>`).join('')}</div>${m.text ? `<p>${m.text}</p>` : ''}</li>`
+        if ('link' in m) return `<li class="${cls} has-link" style="--i:${i}"><div class="chat-link"><b>${m.link.title}</b><span>${m.link.text}</span></div></li>`
+        return `<li class="${cls}" style="--i:${i}"><p>${m.text}</p></li>`
+      }
+      return `
+        <figure class="v v-chat reveal">
+          <div class="chat">
+            <p class="chat-head">${v.logo ? `<img src="${root}${v.logo}" width="34" height="40" alt="">` : ''}<span><b>${v.business}</b><small>Cuenta de empresa</small></span></p>
+            <ol class="chat-log" aria-label="Conversación de ejemplo">${v.messages.map(msg).join('')}</ol>
+          </div>
+          <figcaption>${v.caption}</figcaption>
+        </figure>`
+    }
     case 'library':
       return `
         <figure class="v v-library reveal">
