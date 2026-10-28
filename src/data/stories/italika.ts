@@ -56,14 +56,14 @@ export const italika: CaseStory = {
       heading: 'Primero, ver <em>cómo trabajaban.</em>',
       body: [
         'Fui al taller a ver cómo contactaban a sus clientes. Todo era manual: revisar el reporte, buscar el teléfono y escribir o llamar cliente por cliente para recordarle su servicio. Con miles de registros, el seguimiento dependía del tiempo libre del personal.',
-        'Y la lealtad vivía en una tarjeta de cartón con sellos a mano, como en muchos talleres.',
+        'Y así se maneja hoy la lealtad en muchos negocios: con una tarjeta de cartón y sellos a mano. Cosas físicas que se pierden.',
       ],
-      intro: { visuals: [{ type: 'flip-card', caption: 'Una tarjeta de lealtad física · marcas y datos difuminados', front: img('tarjeta-fisica-frente', 900, 518, 'Frente de una tarjeta de cliente frecuente de cartón, con un dato escrito a mano.'), back: img('tarjeta-fisica-reverso', 900, 518, 'Reverso de la tarjeta con círculos para sellos, tres marcados a mano con plumón.'), pains: [
+      intro: { visuals: [{ type: 'flip-card', caption: 'Ejemplo real: la tarjeta de lealtad de un club de pádel', front: img('tarjeta-fisica-frente', 1000, 614, 'Frente de una tarjeta de cliente frecuente de cartón de un club de pádel, con un nombre escrito a mano.'), back: img('tarjeta-fisica-reverso', 1000, 614, 'Reverso de la tarjeta con círculos para sellos, tres marcados a mano con plumón.'), pains: [
         'Se pierde, se moja o se queda en otra cartera.',
         'Un plumón basta para sumar un sello.',
         'Sin trazabilidad: nadie sabe qué servicio dio cada sello.',
         'No se puede medir quién está cerca del premio o quién dejó de venir.',
-        'El taller no puede avisarle a nadie: no hay un teléfono ligado a la tarjeta.',
+        'El negocio no puede avisarle a nadie: no hay un teléfono ligado a la tarjeta.',
       ] }], after: ['La decisión clave fue no pedirle a nadie instalar algo nuevo: el cliente ya vive en WhatsApp, y el personal también.'] },
       options: [
         { name: 'App propia para clientes', verdict: 'Descartada', reason: 'El perfil del cliente no está acostumbrado a descargar apps ni a usar Wallet.' },
