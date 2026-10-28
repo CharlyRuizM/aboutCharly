@@ -56,8 +56,15 @@ export const italika: CaseStory = {
       heading: 'Primero, ver <em>cómo trabajaban.</em>',
       body: [
         'Fui al taller a ver cómo contactaban a sus clientes. Todo era manual: revisar el reporte, buscar el teléfono y escribir o llamar cliente por cliente para recordarle su servicio. Con miles de registros, el seguimiento dependía del tiempo libre del personal.',
-        'La decisión clave fue no pedirle a nadie instalar algo nuevo: el cliente ya vive en WhatsApp, y el personal también.',
+        'Y la lealtad vivía en una tarjeta de cartón con sellos a mano, como en muchos talleres.',
       ],
+      intro: { visuals: [{ type: 'flip-card', caption: 'Una tarjeta de lealtad física · marcas y datos difuminados', front: img('tarjeta-fisica-frente', 900, 518, 'Frente de una tarjeta de cliente frecuente de cartón, con un dato escrito a mano.'), back: img('tarjeta-fisica-reverso', 900, 518, 'Reverso de la tarjeta con círculos para sellos, tres marcados a mano con plumón.'), pains: [
+        'Se pierde, se moja o se queda en otra cartera.',
+        'Un plumón basta para sumar un sello.',
+        'Sin trazabilidad: nadie sabe qué servicio dio cada sello.',
+        'No se puede medir quién está cerca del premio o quién dejó de venir.',
+        'El taller no puede avisarle a nadie: no hay un teléfono ligado a la tarjeta.',
+      ] }], after: ['La decisión clave fue no pedirle a nadie instalar algo nuevo: el cliente ya vive en WhatsApp, y el personal también.'] },
       options: [
         { name: 'App propia para clientes', verdict: 'Descartada', reason: 'El perfil del cliente no está acostumbrado a descargar apps ni a usar Wallet.' },
         { name: 'Bandeja de mensajes propia', verdict: 'Descartada', reason: 'Duplicaba la herramienta que el personal ya usa todos los días.' },
@@ -77,23 +84,31 @@ export const italika: CaseStory = {
         { type: 'steps', steps: ['Reporte semanal de Italika', 'Validación, teléfonos y agrupación por cliente', 'Cola de seguimientos: vencidos, hoy y esta semana'] },
         { type: 'shot', ...INICIO, caption: 'Inicio del taller · datos simulados' },
         { type: 'shot', src: `${P}panel-seguimientos.webp`, width: 1600, height: 1025, alt: 'Cola de seguimientos con contadores de vencidos, hoy, esta semana y próximos, y acciones para llamar o escribir por WhatsApp. Datos simulados.', caption: 'Seguimientos priorizados por fecha · datos simulados' },
+        { type: 'chat', dark: true, caption: 'Siguiente paso · recordatorios automáticos con reglas de fecha y frecuencia. Mensajes de ejemplo.', business: 'Centro de servicio', logo: `${P}italika-white.webp`, messages: [
+          { day: 'Martes 20 de enero' },
+          { from: 'business', text: '🏍️ Hola, Ana. Tu Italika FT150 está por cumplir su servicio de 6,000 km. Agenda tu visita antes del 27 de enero para mantener tu garantía y sumar un sello.', buttons: ['Agendar servicio', 'Ya lo hice'] },
+          { from: 'customer', text: 'Agendar servicio' },
+          { from: 'business', text: '¡Perfecto, Ana! En un momento alguien del taller te escribe para darte día y hora. 🔧' },
+          { day: 'Miércoles 28 de enero' },
+          { from: 'business', text: '⏰ Ana, tu servicio de 6,000 km venció ayer. Todavía estás a tiempo de conservar tu garantía: tráela esta semana. Te falta 1 sello para tu servicio gratis. 🎁', buttons: ['Agendar servicio'] },
+        ] },
       ],
+      after: ['El siguiente paso es que la cola se trabaje sola: recordatorios por WhatsApp antes y después de la fecha de servicio, con reglas de frecuencia para no saturar a nadie, y el personal entra solo cuando el cliente responde.'],
     },
     {
       id: 'whatsapp',
       label: 'WhatsApp',
       heading: 'El ticket <em>es el comprobante.</em>',
       body: [
-        'Para sumar un sello, el cliente solo manda la foto de su ticket de servicio al WhatsApp del taller. El sistema la lee con <b>OCR de Google Vision</b>, reconoce el formato del ticket, identifica la moto por su número de serie y al cliente por su teléfono, y registra servicio y sello en una sola transacción. La respuesta llega con el saldo real.',
+        'Para sumar un sello, el cliente escribe «Registrar servicio» y sube la foto de su ticket desde un formulario dentro del mismo chat (<b>WhatsApp Flow</b>). El sistema la lee con <b>OCR de Google Vision</b>, reconoce el formato del ticket, identifica la moto por su número de serie y al cliente por su teléfono, y registra servicio y sello en una sola transacción. La respuesta llega con el saldo real.',
         'Lo más difícil fue la conexión con WhatsApp. Usé <b>Kapso</b> como capa sobre la API de WhatsApp para recibir mensajes y fotos con webhooks firmados, respetar la ventana de 24 horas y separar un canal de pruebas, con números permitidos, del canal real del taller.',
       ],
       visuals: [
-        { type: 'chat', caption: 'Simulación de la conversación · datos ficticios', business: 'Centro de servicio', logo: `${P}italika-white.webp`, messages: [
-          { from: 'customer', ticket: { title: 'CENTRO DE SERVICIO', lines: ['Folio 10247', 'Italika FT150', 'VIN …T9000001', 'SERVICIO 1,000 KM', 'Próximo: 27/01/2027 · 6,000 km'] }, text: 'Hola, les mando mi ticket' },
-          { from: 'business', text: 'Recibimos tu ticket. Lo estamos revisando…' },
-          { from: 'business', text: 'Listo, Ana. Registramos el servicio de 1,000 km de tu Italika FT150. Sumaste 1 sello: llevas 3 de 4.' },
-          { from: 'business', text: 'Tu próximo servicio: 27 ene 2027 o 6,000 km, lo que ocurra primero.' },
-          { from: 'business', link: { title: 'Tu tarjeta · Italika', text: 'Te falta 1 sello para tu servicio gratis' } },
+        { type: 'wa-slides', caption: 'Capturas reales desde un número de prueba · nombre y enlace personal difuminados', slides: [
+          img('whatsapp-1', 603, 1311, 'Chat de WhatsApp: el cliente escribe Registrar servicio, recibe instrucciones y la confirmación de que sumó 1 sello.', 'Escribe «Registrar servicio»'),
+          img('whatsapp-2', 603, 1311, 'Formulario de WhatsApp Flow para subir la foto del ticket de servicio.', 'Sube la foto del ticket sin salir del chat'),
+          img('whatsapp-3', 603, 1311, 'Confirmación: servicio registrado, 1 sello sumado y enlace a la tarjeta del cliente.', 'Recibe su sello y el enlace a su tarjeta'),
+          img('whatsapp-4', 603, 1311, 'Mensajes al reunir 4 sellos y al canjear el servicio gratis.', 'Completa 4 sellos y canjea su servicio gratis'),
         ] },
         { type: 'steps', steps: ['Foto del ticket en WhatsApp', 'Kapso envía un webhook firmado', 'Google Vision lee el ticket', 'Se identifica moto (VIN) y cliente (teléfono)', 'Servicio y sello en una sola transacción', 'Respuesta con el saldo real'] },
         { type: 'shot', src: `${P}panel-tickets.webp`, width: 1600, height: 956, alt: 'Pantalla para registrar un servicio con la foto del ticket y revisar las fotos recibidas por WhatsApp. Datos simulados.', caption: 'Los tickets dudosos pasan a revisión del personal · datos simulados' },
@@ -125,7 +140,7 @@ export const italika: CaseStory = {
         { label: 'Funciones en servidor', before: '', after: '5' },
         { label: 'Pruebas automáticas', before: '', after: '+200' },
       ] }],
-      after: ['<small>Proyecto propio. Italika es marca de su titular y se usa con su permiso. Las capturas y la conversación usan datos simulados; no se muestran datos de clientes reales.</small>'],
+      after: ['<small>Proyecto propio. Italika es marca de su titular y se usa con su permiso. Las capturas del panel usan datos simulados y las de WhatsApp vienen de un número de prueba; no se muestran datos de clientes reales.</small>'],
     },
   ],
 }

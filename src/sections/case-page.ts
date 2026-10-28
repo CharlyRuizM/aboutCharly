@@ -14,6 +14,7 @@ export function renderCasePage(c: CaseStudy, draft = false) {
         <p class="cs-eyebrow"><span>${pad(i + 1)}</span>${x.label}</p>
         <h2 id="${x.id}-t">${x.heading}</h2>
         ${x.body.map(p => `<p>${p}</p>`).join('')}
+        ${x.intro ? x.intro.visuals.map(v => renderVisual(v, ROOT)).join('') + (x.intro.after ?? []).map(p => `<p>${p}</p>`).join('') : ''}
         ${x.options ? `<div class="cs-options" role="table" aria-label="Alternativas evaluadas">${x.options.map(o => `
           <div class="cs-option${o.verdict === 'Elegida' ? ' is-chosen' : o.verdict === 'Paso intermedio' || o.verdict === 'Roadmap' ? ' is-step' : ''}" role="row">
             <span role="cell" class="cs-option-name">${o.name}</span>

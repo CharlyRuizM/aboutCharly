@@ -37,6 +37,7 @@ export type CaseSection = {
   label: string // etiqueta corta para el índice (Contexto, Problema…)
   heading: string // admite <em> para el énfasis en itálica
   body: string[] // párrafos; admiten <b> y <em>
+  intro?: { visuals: Visual[]; after?: string[] } // visuales y párrafos entre el cuerpo y las alternativas
   options?: { name: string; verdict: 'Elegida' | 'Paso intermedio' | 'Roadmap' | 'Descartada'; reason: string }[] // alternativas evaluadas
   visuals?: Visual[]
   list?: { title: string; items: string[] } // lista corta (p. ej. métricas)
@@ -74,10 +75,13 @@ export type DsVisual =
   | { type: 'typescale'; caption: string; rows: { name: string; family: string; desk: string; mobile: string; size: number; weight?: number }[] }
   | { type: 'strip'; caption: string; images: ShotImage[] } // fila con scroll horizontal
   | { type: 'code'; caption: string; code: string }
-  | { type: 'chat'; caption: string; business: string; logo?: string; messages: ChatMessage[] } // conversación de WhatsApp simulada
+  | { type: 'chat'; caption: string; business: string; logo?: string; dark?: boolean; messages: ChatMessage[] } // conversación de WhatsApp simulada
+  | { type: 'wa-slides'; caption: string; slides: ShotImage[] } // capturas reales en un teléfono, que avanzan solas
+  | { type: 'flip-card'; caption: string; front: ShotImage; back: ShotImage; pains: string[] } // tarjeta física que gira con el scroll
   | { type: 'library'; caption: string; items: (ShotImage & { name: string; wide?: boolean })[] } // mosaico de componentes de la librería
 
 export type ChatMessage =
-  | { from: 'customer' | 'business'; text: string }
+  | { from: 'customer' | 'business'; text: string; buttons?: string[] }
+  | { day: string }
   | { from: 'customer'; ticket: { title: string; lines: string[] }; text?: string }
   | { from: 'business'; link: { title: string; text: string } }

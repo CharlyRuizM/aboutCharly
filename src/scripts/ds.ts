@@ -80,4 +80,42 @@ export function ds() {
       b.addEventListener('blur', clear)
     })
   })
+
+  // Capturas de WhatsApp: avanzan solas mientras están en pantalla; los pasos permiten elegir
+  document.querySelectorAll<HTMLElement>('[data-slides]').forEach(fig => {
+    const imgs = [...fig.querySelectorAll<HTMLImageElement>('.wa-screen img')]
+    const btns = [...fig.querySelectorAll<HTMLButtonElement>('.wa-steps button')]
+    let i = 0, timer = 0, visible = false, paused = false
+    const go = (n: number) => {
+      i = (n + imgs.length) % imgs.length
+      imgs.forEach((im, k) => im.classList.toggle('is-on', k === i))
+      btns.forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)))
+    }
+    const tick = () => { window.clearTimeout(timer); if (visible && !paused && !reduced()) timer = window.setTimeout(() => { go(i + 1); tick() }, 3600) }
+    btns.forEach((b, k) => b.addEventListener('click', () => { go(k); tick() }))
+    fig.addEventListener('pointerenter', () => { paused = true; tick() })
+    fig.addEventListener('pointerleave', () => { paused = false; tick() })
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; tick() }, { threshold: 0.4 }).observe(fig)
+  })
+
+  // Tarjeta física: gira con el scroll y van apareciendo sus problemas
+  const flips = [...document.querySelectorAll<HTMLElement>('[data-flip]')]
+  if (flips.length && !reduced()) {
+    flips.forEach(f => f.classList.add('is-scrub'))
+    let raf = 0
+    const update = () => {
+      raf = 0
+      flips.forEach(f => {
+        const r = f.getBoundingClientRect(), vh = innerHeight
+        const p = Math.min(1, Math.max(0, (vh * 0.25 - r.top) / Math.max(1, r.height - vh * 0.75)))
+        f.style.setProperty('--p', p.toFixed(3))
+        f.querySelectorAll<HTMLElement>('.flip-pains li').forEach((li, k, all) => li.classList.toggle('is-on', p > 0.3 + (k / all.length) * 0.55))
+      })
+    }
+    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update) }, { passive: true })
+    addEventListener('resize', update)
+    update()
+  }
 }
+
+const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches

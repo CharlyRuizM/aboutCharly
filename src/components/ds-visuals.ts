@@ -102,20 +102,47 @@ export function renderDsVisual(v: DsVisual, root = './'): string {
         </figure>`
     case 'chat': {
       const msg = (m: ChatMessage, i: number) => {
+        if ('day' in m) return `<li class="msg-day" style="--i:${i}"><span>${m.day}</span></li>`
         const cls = `msg ${m.from === 'customer' ? 'is-out' : 'is-in'}`
         if ('ticket' in m) return `<li class="${cls} has-ticket" style="--i:${i}"><div class="ticket" role="img" aria-label="Foto de un ticket de servicio con datos ficticios"><b>${m.ticket.title}</b>${m.ticket.lines.map(l => `<span>${l}</span>`).join('')}</div>${m.text ? `<p>${m.text}</p>` : ''}</li>`
         if ('link' in m) return `<li class="${cls} has-link" style="--i:${i}"><div class="chat-link"><b>${m.link.title}</b><span>${m.link.text}</span></div></li>`
-        return `<li class="${cls}" style="--i:${i}"><p>${m.text}</p></li>`
+        return `<li class="${cls}" style="--i:${i}"><p>${m.text}</p>${m.buttons ? `<span class="msg-buttons">${m.buttons.map(b => `<span>${b}</span>`).join('')}</span>` : ''}</li>`
       }
       return `
         <figure class="v v-chat reveal">
-          <div class="chat">
+          <div class="chat${v.dark ? ' is-dark' : ''}">
             <p class="chat-head">${v.logo ? `<img src="${root}${v.logo}" width="34" height="40" alt="">` : ''}<span><b>${v.business}</b><small>Cuenta de empresa</small></span></p>
             <ol class="chat-log" aria-label="Conversación de ejemplo">${v.messages.map(msg).join('')}</ol>
           </div>
           <figcaption>${v.caption}</figcaption>
         </figure>`
     }
+    case 'wa-slides':
+      return `
+        <figure class="v v-waslides reveal" data-slides>
+          <div class="wa-phone">
+            <div class="wa-screen">${v.slides.map((m, i) => `
+              <img class="${i === 0 ? 'is-on' : ''}" src="${root}${m.src}" width="${m.width}" height="${m.height}" alt="${m.alt}" ${i ? 'loading="lazy" ' : ''}decoding="async">`).join('')}
+            </div>
+          </div>
+          <ol class="wa-steps" aria-label="Pasos de la conversación">${v.slides.map((m, i) => `
+            <li><button type="button" aria-pressed="${i === 0}" data-i="${i}"><span>${String(i + 1).padStart(2, '0')}</span>${m.caption}</button></li>`).join('')}
+          </ol>
+          <figcaption>${v.caption}</figcaption>
+        </figure>`
+    case 'flip-card':
+      return `
+        <figure class="v v-flip" data-flip>
+          <div class="flip-sticky">
+            <div class="flip-card" aria-hidden="true">
+              <img class="flip-front" src="${root}${v.front.src}" width="${v.front.width}" height="${v.front.height}" alt="" decoding="async">
+              <img class="flip-back" src="${root}${v.back.src}" width="${v.back.width}" height="${v.back.height}" alt="" decoding="async">
+            </div>
+            <ul class="flip-pains" aria-label="Problemas de la tarjeta física">${v.pains.map((p, i) => `<li style="--i:${i}">${p}</li>`).join('')}</ul>
+            <p class="visually-hidden">${v.front.alt} ${v.back.alt}</p>
+            <figcaption>${v.caption}</figcaption>
+          </div>
+        </figure>`
     case 'library':
       return `
         <figure class="v v-library reveal">

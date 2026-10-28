@@ -59,3 +59,59 @@
 /* El chat conserva sus propios colores aunque la sección pinte los <b> */
 .v-chat .chat-head b, .v-chat .chat-link b { color: #fff; font-weight: 600; }
 .v-chat .ticket b { color: #111; }
+
+/* ---------- Chat oscuro (como WhatsApp en modo oscuro) y extras ---------- */
+.chat.is-dark { background: #0b0b0b; color: #e9edef; border-color: #222; }
+.chat.is-dark .chat-head { background: #1f1f1f; }
+.chat.is-dark .chat-log { background: radial-gradient(circle, rgb(255 255 255 / .05) 1px, transparent 1.5px) 0 0 / 14px 14px, #0b0b0b; }
+.chat.is-dark .msg.is-in { background: #242626; }
+.chat.is-dark .msg.is-out { background: #144d37; }
+.msg-day { justify-self: center; }
+.msg-day span { display: inline-block; padding: 4px 10px; border-radius: 8px; background: rgb(0 0 0 / .08); font-size: 11.5px; font-weight: 500; }
+.chat.is-dark .msg-day span { background: #1f1f1f; color: #b5bcc0; }
+.msg-buttons { display: grid; margin: 8px -10px -8px; border-top: 1px solid rgb(127 127 127 / .25); }
+.msg-buttons span { padding: 9px 10px; text-align: center; color: #21c063; font-weight: 500; }
+.msg-buttons span + span { border-top: 1px solid rgb(127 127 127 / .25); }
+
+/* ---------- Capturas reales en un teléfono ---------- */
+.v-waslides { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 16px clamp(20px, 4vw, 48px); align-items: center; }
+.v-waslides figcaption { grid-column: 1 / -1; }
+.wa-phone { padding: 10px; border-radius: 44px; background: #1a1a1a; box-shadow: 0 0 0 1px #333, 0 24px 60px rgb(0 0 0 / .35); }
+.wa-screen { position: relative; aspect-ratio: 603 / 1311; overflow: hidden; border-radius: 34px; background: #101010; }
+.wa-screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: translateY(14px) scale(.985); transition: opacity .5s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
+.wa-screen img.is-on { opacity: 1; transform: none; }
+.wa-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; counter-reset: none; }
+.wa-steps button { display: flex; gap: 14px; align-items: baseline; width: 100%; padding: 12px 14px; border: 1px solid var(--color-border); border-radius: 12px; background: none; color: var(--color-muted); font: 15px/1.4 var(--font-sans); text-align: left; cursor: pointer; transition: color .15s, border-color .15s, background-color .15s; }
+.wa-steps button span { font: 12px/1 var(--font-mono); color: var(--color-dim); }
+.wa-steps button:hover { color: var(--color-text); }
+.wa-steps button[aria-pressed="true"] { color: var(--color-text); border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.wa-steps button[aria-pressed="true"] span { color: var(--color-accent); }
+.wa-screen img:not(.is-on) { visibility: hidden; transition: opacity .5s ease, transform .7s cubic-bezier(.2, .8, .2, 1), visibility 0s .5s; }
+.wa-screen img.is-on { visibility: visible; }
+@media (max-width: 640px) { .v-waslides { grid-template-columns: minmax(0, 1fr); justify-items: center; } .wa-phone { width: min(280px, 100%); } .wa-steps { width: 100%; } }
+
+/* ---------- Tarjeta física que gira con el scroll ---------- */
+.v-flip { display: grid; gap: 12px; min-width: 0; }
+.flip-sticky { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px clamp(20px, 4vw, 40px); align-items: center; }
+.flip-card { position: relative; aspect-ratio: 900 / 518; perspective: 1400px; }
+.flip-card img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 14px; box-shadow: 0 18px 40px rgb(0 0 0 / .35); }
+.flip-pains { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.flip-pains li { position: relative; padding: 10px 0 10px 28px; border-bottom: 1px solid var(--color-border); font-size: 15px; line-height: 1.45; color: var(--color-text); }
+.flip-pains li::before { content: '✕'; position: absolute; left: 0; top: 10px; color: #ff4f5e; font: 600 14px/1.45 var(--font-mono); }
+/* Sin JS o con movimiento reducido: frente y reverso, uno tras otro */
+.v-flip:not(.is-scrub) .flip-card { display: grid; gap: 10px; aspect-ratio: auto; }
+.v-flip:not(.is-scrub) .flip-card img { position: static; height: auto; }
+/* Con scroll: la sección es más alta, el contenido se queda fijo y la tarjeta gira */
+.v-flip.is-scrub { height: 180vh; align-content: start; }
+.v-flip.is-scrub .flip-sticky { position: sticky; top: 18vh; }
+.v-flip.is-scrub .flip-card { transform-style: preserve-3d; transform: rotateY(calc(min(var(--p, 0) * 2, 1) * -180deg)) rotateX(calc((1 - min(var(--p, 0) * 2, 1)) * 6deg)); transition: transform .12s linear; }
+.v-flip.is-scrub .flip-card img { backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; }
+.v-flip.is-scrub .flip-back { transform: rotateY(180deg); }
+.v-flip.is-scrub .flip-pains li { opacity: .15; translate: 12px 0; transition: opacity .4s ease, translate .5s cubic-bezier(.2, .8, .2, 1); }
+.v-flip.is-scrub .flip-pains li.is-on { opacity: 1; translate: 0 0; }
+@media (max-width: 720px) {
+  .flip-sticky { grid-template-columns: minmax(0, 1fr); }
+  .v-flip.is-scrub { height: 200vh; }
+  .v-flip.is-scrub .flip-sticky { top: 10vh; }
+}
+.flip-sticky figcaption { grid-column: 1 / -1; }
